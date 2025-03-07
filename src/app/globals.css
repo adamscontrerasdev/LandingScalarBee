@@ -1,8 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
+input,
+select,
+textarea {
+  outline: none;
+  /* Elimina el borde de enfoque */
+  transition: border-color 0.3s ease;
+  /* Agrega una transición suave para el cambio de borde */
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border: 2px solid var(--primary-color);
+  /* Aplica el borde de color primario en el foco */
+}
+
+h1 {
+  @apply text-3xl md:text-4xl lg:text-6xl font-bold;
+}
+
+h2 {
+  @apply text-base md:text-lg lg:text-xl font-bold;
+}
+
+p {
+  @apply text-sm md:text-base lg:text-lg;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #E5E5E5;
+  --foreground: #000;
+
+  --primary-color: #f5cc00;
+  --primary-color-dark: #CCA000;
+  --secondary-color: #003566;
+  --secondary-color-dark: #001D3D;
+  --black-org: #000814;
 }
 
 @theme inline {
@@ -14,13 +49,21 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000;
+    --foreground: #fff;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }
