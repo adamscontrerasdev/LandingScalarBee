@@ -53,7 +53,6 @@ const LightScene = ({ scaleModel }: SceneProps) => {
 };
 
 const Scene = ({ scaleModel }: SceneProps) => {
-  // Referencias para las luces direccionales
   const directionalLight1Ref = useRef(null);
   const directionalLight2Ref = useRef(null);
 
@@ -64,20 +63,20 @@ const Scene = ({ scaleModel }: SceneProps) => {
 
       {/* Luz direccional desde la izquierda */}
       <directionalLight
-        ref={directionalLight1Ref} // Referencia para el helper
-        position={[-5, -3, 5]} // Posición de la luz
-        intensity={100} // Intensidad de la luz
-        color={"#003566"} // Color de la luz (azul)
-        castShadow // Habilita sombras
+        ref={directionalLight1Ref} 
+        position={[-5, -3, 5]} 
+        intensity={100} 
+        color={"#003566"}
+        castShadow 
       />
 
       {/* Luz direccional desde la derecha */}
       <directionalLight
-        ref={directionalLight2Ref} // Referencia para el helper
-        position={[5, -5, 5]} // Posición de la luz
-        intensity={20} // Intensidad de la luz
-        color={"#F5CC00"} // Color de la luz (amarillo)
-        castShadow // Habilita sombras
+        ref={directionalLight2Ref} 
+        position={[5, -5, 5]} 
+        intensity={20}
+        color={"#F5CC00"} 
+        castShadow 
       />
 
       <LightScene scaleModel={scaleModel}/>
@@ -86,7 +85,6 @@ const Scene = ({ scaleModel }: SceneProps) => {
   );
 };
 
-// Componente principal
 export const Background = () => {
   const [scaleUp, setScaleUp] = useState(false);
   const [grab, setGrab] = useState(false);

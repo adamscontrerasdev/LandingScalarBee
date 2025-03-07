@@ -2,7 +2,6 @@
 export * from "./NavbarComponent/Navbar"
 
 //inicio components
-export * from "./InicioComponents/Background"
 export * from "./InicioComponents/Content"
 
 //Beneficios components
