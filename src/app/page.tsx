@@ -150,19 +150,25 @@ export default function Home() {
         >
           <BeneficiosScreen isFocus={currentIndex === 1} />
         </div>
+
         <motion.div
-          className="to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 z-10 pointer-events-none"
+          className="absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 z-10 pointer-events-none"
           initial={{ opacity: 0 }}
-          animate={{
-            opacity: hasScrolledSections.beneficios ? 1 : 0,
-            background:
-              currentIndex === 1
-                ? "linear-gradient(to bottom, var(--foreground) 2%, transparent 20%)"
-                : "transparent",
-          }}
+          animate={{ opacity: hasScrolledSections.beneficios ? 1 : 0 }}
           transition={{ type: "spring", stiffness: 120, damping: 15 }}
-        />
-        ;
+        >
+          <motion.div
+            className="absolute inset-0 rounded-t-2xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: hasScrolledSections.beneficios ? 1 : 0.2 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            style={{
+              background:
+                "linear-gradient(to bottom, var(--foreground) 2%, transparent 20%)",
+            }}
+          />
+        </motion.div>
+
         <div
           className=" to-transparent absolute top-[46%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 z-10 pointer-events-none"
           style={{
