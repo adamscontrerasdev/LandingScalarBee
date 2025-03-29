@@ -18,6 +18,17 @@ export default function Home() {
     lastcta: false,
     contact: false,
   });
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (currentIndex === 0 && scrollRef.current) {
+      scrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [currentIndex]);
+
+  const handleClickHome = () => {
+    scrollToSection(0);
+  };
 
   // Función que maneja el desplazamiento para cada sección
   const handleScroll = (e: React.UIEvent<HTMLDivElement>, section: string) => {
@@ -104,7 +115,10 @@ export default function Home() {
   return (
     <div className="relative h-screen overflow-hidden" aria-live="polite">
       {/* InicioScreen - Siempre visible en el fondo */}
-      <div className="fixed top-0 left-0 w-full h-full z-0">
+      <div
+        className="fixed top-0 left-0 w-full h-full z-0"
+        onClick={() => handleClickHome()}
+      >
         <InicioScreen isFocus={currentIndex === 0} />
       </div>
 
@@ -132,18 +146,23 @@ export default function Home() {
         <div
           className="scrollable-content  absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
           onScroll={(e) => handleScroll(e, "beneficios")}
+          ref={scrollRef}
         >
           <BeneficiosScreen isFocus={currentIndex === 1} />
         </div>
-        <div
-          className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 z-10 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to bottom, var(--foreground)2%, transparent 20%)",
+        <motion.div
+          className="to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 z-10 pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{
             opacity: hasScrolledSections.beneficios ? 1 : 0,
-            transition: "opacity 0.2s ease-in-out",
+            background:
+              currentIndex === 1
+                ? "linear-gradient(to bottom, var(--foreground) 2%, transparent 20%)"
+                : "transparent",
           }}
-        ></div>
+          transition={{ type: "spring", stiffness: 120, damping: 15 }}
+        />
+        ;
         <div
           className=" to-transparent absolute top-[46%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 z-10 pointer-events-none"
           style={{
