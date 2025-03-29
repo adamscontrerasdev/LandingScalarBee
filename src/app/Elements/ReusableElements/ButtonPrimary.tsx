@@ -1,3 +1,5 @@
+import { Magnet } from "./Magnet";
+
 interface ButtonPrimaryProps {
   text?: string;
   className?: string;
@@ -10,11 +12,13 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
   style,
 }) => {
   return (
-    <button
-      className={`text-base font-bold bg-[var(--primary-color)] rounded-xl cursor-pointer hover:scale-105 hover:bg-[var(--primary-color-dark)] transition-all duration-500 relative z-[99999] text-black ${className} p-[10px]`}
-      style={style}
-    >
-      {text}
-    </button>
+    <Magnet padding={200} disabled={false} magnetStrength={20}>
+      <button
+        className={`text-base font-bold bg-[var(--foreground)] rounded-xl cursor-pointer hover:scale-105 transition-all duration-500 relative z-[99999] text-[var(--texts)] ${className} p-3 text-base md:text-xl`}
+        style={style}
+      >
+        {text}
+      </button>
+    </Magnet>
   );
 };

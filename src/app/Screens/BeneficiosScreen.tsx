@@ -1,11 +1,17 @@
-import React from 'react'
-import { BeneficiosContent } from '../components'
+import React from "react";
+import { BeneficiosContent } from "../components";
+import { FolioPageContainer } from "../Elements/ReusableElements/FolioPageContainer";
+import { PropsForScreens } from "../Types";
 
-export const BeneficiosScreen = () => {
+export const BeneficiosScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
   return (
-    <div className='w-screen min-h-screen flex justify-center items-center pt-32'>
-        <BeneficiosContent />
-    </div>
-  )
-}
-
+    <FolioPageContainer
+      sectionTitle="Beneficios"
+      positionOrden={1}
+      id={"Beneficios"}
+      isFocus={isFocus}
+    >
+      <BeneficiosContent />
+    </FolioPageContainer>
+  );
+};

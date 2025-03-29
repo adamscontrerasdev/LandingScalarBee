@@ -17,27 +17,39 @@ textarea:focus {
   /* Aplica el borde de color primario en el foco */
 }
 
-h1 {
-  @apply text-3xl md:text-4xl lg:text-6xl font-bold;
-}
 
-h2 {
-  @apply text-base md:text-lg lg:text-xl font-bold;
-}
+
 
 p {
-  @apply text-sm md:text-base lg:text-lg;
+  @apply text-sm md:text-base lg:text-lg text-[var(--texts)];
 }
 
 :root {
   --background: #E5E5E5;
-  --foreground: #000;
+  --foreground: #eeeeef;
+  --texts: #1a1a1a;
+  --bubbleBg: #eeeeef03;
 
-  --primary-color: #f5cc00;
-  --primary-color-dark: #CCA000;
-  --secondary-color: #003566;
-  --secondary-color-dark: #001D3D;
-  --black-org: #000814;
+  /* Colores primarios */
+  --primary: #f5cc00;
+  --primary-dark: #cca000;
+  --secondary: #003566;
+  --secondary-dark: #001d3d;
+
+  /* Colores de estado*/
+  --success: #34a853;
+  --warning: #ffa500;
+  --error: #d93025;
+  --info: #0a66c2;
+  --default: "#F5CC00";
+}
+
+[data-theme="dark"] {
+  --background: #212121;
+  --foreground: #171717;
+  --texts: #fff;
+  --bubbleBg: #fff5;
+
 }
 
 @theme inline {
@@ -49,8 +61,11 @@ p {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #000;
-    --foreground: #fff;
+    --background: #212121;
+    --foreground: #171717;
+    --texts: #fff;
+    --bubbleBg: #17171703;
+
   }
 }
 

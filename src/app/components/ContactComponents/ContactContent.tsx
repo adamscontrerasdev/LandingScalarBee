@@ -8,28 +8,28 @@ export const ContactContent = () => {
   const redes = [
     {
       id: 1,
-      icon: <ImFacebook2 size={40} className="w-full h-full" />, // Aquí pasamos el componente
+      icon: <ImFacebook2 size={40} className="w-full h-full text-[var(--texts)]" />, // Aquí pasamos el componente
       text: "FACEBOOK*FACEBOOK*",
       link: "https://www.facebook.com/prubasdeusuarios/",
       bg: "#f00",
     },
     {
       id: 2,
-      icon: <FaInstagram size={40} className="w-full h-full" />,
+      icon: <FaInstagram size={40} className="w-full h-full text-[var(--texts)]" />,
       text: "INSTAGRAM*INSTAGRAM*",
       link: "https://www.instagram.com/prubasdeusuarios/",
       bg: "#0f0",
     },
     {
       id: 3,
-      icon: <RiTwitterXFill size={40} className="w-full h-full" />,
+      icon: <RiTwitterXFill size={40} className="w-full h-full text-[var(--texts)]" />,
       text: "X*X*X*TWITTER*",
       link: "https://www.twitter.com/prubasdeusuarios/",
       bg: "#00f",
     },
     {
       id: 4,
-      icon: <IoIosMail size={40} className="w-full h-full" />,
+      icon: <IoIosMail size={40} className="w-full h-full text-[var(--texts)]" />,
       text: "MAIL*MAIL*MAIL*",
       link: "mailto:prubasdeusuarios@example.com",
       bg: "#ff0",

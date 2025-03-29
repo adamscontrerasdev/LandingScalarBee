@@ -1,15 +1,17 @@
 import React from "react";
 import { ServiciciosContent } from "../components";
+import { FolioPageContainer } from "../Elements/ReusableElements/FolioPageContainer";
+import { PropsForScreens } from "../Types";
 
-export const ServiciosScreen = () => {
+export const ServiciosScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
   return (
-    <div
-      className="flex flex-col items-start justify-start min-h-screen w-screen 
-      xl:p-40 gap-10 p-10
-    "
+    <FolioPageContainer
+      sectionTitle="ola"
+      positionOrden={2}
+      id="Servicios"
+      isFocus={isFocus}
     >
-        <h1 className="text-6xl font-bold">Que ofrecemos</h1>
-      <ServiciciosContent />
-    </div>
+      <ServiciciosContent></ServiciciosContent>
+    </FolioPageContainer>
   );
 };

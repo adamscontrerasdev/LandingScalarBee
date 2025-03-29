@@ -1,95 +1,56 @@
 "use client";
-import { ButtonPrimary } from "@/app/Elements";
-import SplitText from "@/app/Elements/SplitText";
-import { easings } from "@react-spring/web";
-import React, { useEffect, useRef, useState } from "react";
+import {
+  ButtonPrimary,
+  FadeContent,
+  Title,
+  SubTitle,
+} from "@/app/Elements";
+import React from "react";
+import Image from "next/image";
+import { useTheme } from "@/app/Hooks/themeContext";
 
 export const Content = () => {
-  const [viewText, setViewText] = useState(false);
-  const [viewButtons, setViewButtons] = useState(false);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  const handleAnimationComplete = () => {
-    setViewText(true);
-  };
-
-  useEffect(() => {
-    if (viewText) {
-      setTimeout(() => {
-        setViewButtons(true);
-      }, 1000);
-    }
-  }, [viewText]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      const content = contentRef.current;
-      if (content) {
-        const maxScroll = 1000;
-
-        let scaleValue;
-        if (currentScrollY <= maxScroll / 2) {
-          scaleValue = 1 - currentScrollY / (maxScroll / 2);
-        } else {
-          scaleValue = (currentScrollY - maxScroll / 2) / (maxScroll / 2);
-        }
-
-        const blurValue = currentScrollY / 50;
-
-        content.style.filter = `blur(${blurValue}px)`;
-        content.style.transform = `scale(${scaleValue})`;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const { isDarkMode } = useTheme();
 
   return (
-    <div
-      className="w-[90%]  flex flex-col justify-start items-start  relative z-40 md:p-10 gap-5 rounded-3xl"
-      ref={contentRef}
+    <FadeContent
+      blur={true}
+      duration={1000}
+      easing="ease-out"
+      initialOpacity={0}
+      className=" h-full flex flex-col lg:flex-row-reverse justify-center items-center  rounded-2xl  z-10"
     >
-      <div className="flex flex-col items-start justify-start xl:w-[45%]">
-        <SplitText
-          text={`Impulsa tu empresa con inteligencIA`}
-          className=" font-extrabold pb-5"
-          delay={50}
-          animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
-          animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
-          easing={easings.easeOutCubic}
-          threshold={0.2}
-          rootMargin="-50px"
-          textAlign="left"
-          onLetterAnimationComplete={handleAnimationComplete}
+      {/* Imagen Arriba en Mobile, Derecha en Desktop */}
+      <div className="w-full h-1/2 md:h-auto flex justify-center lg:justify-start items-center ">
+        <Image
+          src={
+            isDarkMode
+              ? "/Img/Inicio/ResponsiveDark.png"
+              : "/Img/Inicio/ResponsiveLight.png"
+          }
+          width={3000}
+          height={3000}
+          alt="QLQ"
+          className="w-full object-contain max-w-2xl "
         />
+      </div>
 
-        <p
-          className=" font-bold transition-all duration-1000  text-left w-3/4"
+      {/* Contenido de Texto */}
+      <div className="w-full h-1/2 md:h-full flex justify-center items-start md:items-center  md:p-5 ">
+        <div
+          className="flex flex-col items-start justify-center gap-3  md:p-5"
           style={{
-            opacity: viewText ? 1 : 0,
-            filter: viewText ? "blur(0px)" : "blur(100px)",
+            background:
+              "linear-gradient(150deg, var(--background) 30%, transparent 40%)",
+            borderRadius: "20px 0 0 0",
           }}
         >
-          Impulsa tu negocio{" "}
-          <span className="text-[var(--primary-color)]">emergente</span> con
-          soluciones de software a medida: innovación, eficiencia y crecimiento
-          en cada <span className="text-[var(--primary-color)]">Click</span>
-        </p>
-      </div>
+          <Title value="Impulsa tu negocio" />
+          <SubTitle value="Optimiza tu taller con ScalarBee: gestión de órdenes, Finanzas y clientes en un solo lugar. !Pruébalo gratis hoy!" />
 
-      <div className="flex gap-3">
-        <ButtonPrimary
-          style={{
-            filter: viewButtons ? "blur(0px)" : "blur(100px)",
-          }}
-        />
+          <ButtonPrimary />
+        </div>
       </div>
-    </div>
+    </FadeContent>
   );
 };

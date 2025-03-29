@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar, ParticlesBg } from "@/app/components";
 import { ThemeProvider } from "./Hooks/themeContext";
 import { ModalProvider } from "./Hooks/modalContext";
 import { ActiveItemProvider } from "./Hooks/ActiveItemToTheServiceComponentContext";
@@ -34,8 +33,8 @@ export default function RootLayout({
         <ActiveItemProvider>
           <ModalProvider>
             <ThemeProvider>
-              <Navbar />
-              <ParticlesBg />
+              {/* <Navbar /> */}
+              {/* <ParticlesBg /> */}
               {children}
             </ThemeProvider>
           </ModalProvider>

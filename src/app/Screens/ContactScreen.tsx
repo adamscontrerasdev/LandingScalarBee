@@ -1,9 +1,16 @@
 import { ContactContent } from "../components";
+import { FolioPageContainer } from "../Elements/ReusableElements/FolioPageContainer";
+import { PropsForScreens } from "../Types";
 
-export const ContactScreen = () => {
+export const ContactScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
   return (
-    <div className="w-screen h-[50vh] px-10  xl:px-40 overflow-hidden">
-        <ContactContent/>
-    </div>
+    <FolioPageContainer
+      positionOrden={4}
+      sectionTitle="Last"
+      id="Contacto"
+      isFocus={isFocus}
+    >
+      <ContactContent />
+    </FolioPageContainer>
   );
 };

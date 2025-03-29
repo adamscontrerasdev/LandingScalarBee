@@ -1,22 +1,42 @@
+"use client";
 import React from "react";
 import { Content } from "../components";
-import { IoIosArrowDown } from "react-icons/io";
-import Link from "next/link";
+import { useTheme } from "../Hooks/themeContext";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { PropsForScreens } from "../Types";
 
-export const InicioScreen = () => {
+export const InicioScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
+  const { isDarkMode } = useTheme();
+
   return (
-    <div
-      className="w-screen h-screen relative flex justify-center items-center overflow-hidden"
+    <motion.div
+      className="w-screen h-screen flex justify-center items-center overflow-hidden md:py-20 pt-20 px-3 md:px-10 xl:px-52 fixed top-0 left-0 z-0 "
       id="Inicio"
+      initial={{ filter: "blur(0px)", pointerEvents: "auto", scale: 1 }}
+      animate={{
+        filter: !isFocus ? "blur(50px)" : "blur(0px)",
+        pointerEvents: !isFocus ? "none" : "auto",
+        scale: !isFocus ? 0.5 : 1,
+      }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      {/* <Background /> */}
       <Content />
-      {/* <DeviceForm></DeviceForm> */}
-      <div className="absolute bottom-0 left-0 w-screen h-20 z-10  opacity-10 flex justify-center items-center">
-        <Link href={"#Nosotros"}>
-          <IoIosArrowDown className="text-white text-5xl animate-pulse" />
-        </Link>
+
+      <div className="top-0 left-0 w-auto h-full z-0 absolute">
+        <Image
+          src={
+            isDarkMode
+              ? "/Img/Backgrounds/BlackPanalFinal4k.png"
+              : "/Img/Backgrounds/withePanal.png"
+          }
+          width={3200}
+          height={5687}
+          alt="bg"
+          className="w-full h-full hidden lg:block"
+        />
       </div>
-    </div>
+    </motion.div>
   );
 };

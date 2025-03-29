@@ -28,7 +28,7 @@ export const Footer = () => {
 
   return (
     <div
-      className="w-screen md:h-[50vh]  relative overflow-hidden"
+      className="w-screen md:h-[50vh]  relative overflow-x-hidden"
       ref={fatherRef}
       style={{
         padding: `0 ${restaPadding}px`, // El padding disminuirá conforme se acerque a 0

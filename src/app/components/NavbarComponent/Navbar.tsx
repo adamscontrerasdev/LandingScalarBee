@@ -8,15 +8,13 @@ export const Navbar = () => {
   const { isDarkMode } = useTheme(); // Usando el hook
 
   const roots = [
-    { title: "Inicio", href: "#Inicio" },
     { title: "Nosotros", href: "#Nosotros" },
     { title: "Contacto", href: "#Contacto" },
   ];
 
   return (
-    <div className="w-screen h-20 flex justify-between items-center  fixed top-0 z-[9999] left-0 px-10 backdrop-blur-xs ">
-      <div className="h-1/2 w-auto  flex justify-center items-center"
-     >
+    <div className="w-screen h-20 flex justify-between items-center  fixed top-0 z-[99999999] left-0 p-3 md:p-0 md:px-5 xl:px-10 backdrop-blur-xs ">
+      <div className="h-1/2 w-auto  flex justify-center items-center">
         <Image
           src={
             isDarkMode
@@ -26,7 +24,7 @@ export const Navbar = () => {
           alt="Logo"
           width={1272}
           height={750}
-          className="w-auto h-full"
+          className="w-auto h-full hidden md:block"
         />
         <Image
           src={
@@ -37,7 +35,7 @@ export const Navbar = () => {
           alt="Logo"
           width={1272}
           height={750}
-          className="w-auto h-full b"
+          className="w-auto h-full"
         />
       </div>
       <div className="h-1/2 min-w-20">
@@ -45,7 +43,7 @@ export const Navbar = () => {
           <Link
             key={root.title}
             href={root.href}
-            className="text-center p-2 rounded-md hover:text-[var(--primary-color)] transition-colors duration-500 md:text-base lg:text-lg font-bold"
+            className="text-center p-2 rounded-md hover:text-[var(--primary)] transition-colors duration-500 md:text-base lg:text-lg font-bold text-[var(--texts)]"
           >
             {root.title}
           </Link>

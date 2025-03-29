@@ -10,7 +10,7 @@ export const FooterContent: React.FC<FooterContentProps> = ({ fatherTop }) => {
 
   return (
     <div
-      className="w-full h-full bg-neutral-900/50 backdrop-blur-sm flex flex-col justify-start items-start p-10 sm:p-16 lg:p-20"
+      className="w-full h-full bg-neutral-900/50 backdrop-blur-sm flex flex-col justify-start items-start p-10 sm:p-16 lg:p-20 overflow-x-hidden"
       style={{ borderRadius: "1.4rem 1.4rem 0 0" }}
     >
       <h2 className="text-lg sm:text-xl font-bold text-white mb-6">
