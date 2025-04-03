@@ -6,6 +6,7 @@ interface Beneficios {
   title: string;
   image: string;
   description: string;
+  TextButton: string;
 }
 
 interface BeneficiosProps {
@@ -19,36 +20,42 @@ const benefits = [
     image: "/Img/Beneficio/Ordenes.png",
     description:
       "Administra todas las órdenes en un solo lugar, mejorando la organización y el control del negocio.",
+    TextButton: "Descúbrelo ahora",
   },
   {
     title: "Seguimiento en tiempo real",
     image: "/Img/Beneficio/Ordenes.png",
     description:
       "Mantente informado sobre el estado de cada orden en cualquier momento, sin perder detalles importantes.",
+    TextButton: "Seguir órdenes",
   },
   {
     title: "Reducción de errores y más eficiencia",
     image: "/Img/Beneficio/Ordenes.png",
     description:
       "Optimiza los procesos y minimiza fallos en la gestión de reparaciones, aumentando la productividad.",
+    TextButton: "Mejorar eficiencia",
   },
   {
     title: "Notificaciones automáticas para clientes",
     image: "/Img/Beneficio/Ordenes.png",
     description:
       "Mantén a tus clientes informados sobre el estado de sus órdenes sin esfuerzo adicional.",
+    TextButton: "Activar notificaciones",
   },
   {
     title: "Interfaz intuitiva y fácil de usar",
     image: "/Img/Beneficio/Ordenes.png",
     description:
       "Una plataforma diseñada para ser accesible y sencilla, sin necesidad de largas curvas de aprendizaje.",
+    TextButton: "Explorar interfaz",
   },
   {
     title: "Mayor rentabilidad con mejor organización",
     image: "/Img/Beneficio/Ordenes.png",
     description:
       "Mejora la administración de recursos y tiempos, lo que se traduce en mayores beneficios para tu negocio.",
+    TextButton: "Optimizar negocio",
   },
 ];
 
@@ -71,6 +78,14 @@ const Card: React.FC<BeneficiosProps> = ({ benefit, order }) => {
       <div className="w-1/2 h-full flex flex-col justify-center items-start gap-2 p-5 ">
         <Title value={benefit.title} variant="small" />
         <p className="text-sm text-gray-500">{benefit.description}</p>
+        <ButtonPrimary
+          text={benefit.TextButton}
+          style={{
+            background: "var(--background)",
+            boxShadow: "0px 0px 50px 10px var(--shadow)",
+          }}
+          notify={benefit.TextButton === "Activar notificaciones"}
+        />
       </div>
     </div>
   );
