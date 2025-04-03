@@ -1,10 +1,5 @@
 "use client";
-import {
-  ButtonPrimary,
-  FadeContent,
-  Title,
-  SubTitle,
-} from "@/app/Elements";
+import { ButtonPrimary, FadeContent, Title, SubTitle } from "@/app/Elements";
 import React from "react";
 import Image from "next/image";
 import { useTheme } from "@/app/Hooks/themeContext";
@@ -45,10 +40,10 @@ export const Content = () => {
             borderRadius: "20px 0 0 0",
           }}
         >
-          <Title value="Impulsa tu negocio" />
-          <SubTitle value="Optimiza tu taller con ScalarBee: gestión de órdenes, Finanzas y clientes en un solo lugar. !Pruébalo gratis hoy!" />
+          <Title value="Optimiza tu negocio de reparación con la mejor gestión" />
+          <SubTitle value="!Organiza!, delega y crece sin perder el control" />
 
-          <ButtonPrimary />
+          <ButtonPrimary text="Prueba gratis por 14 días" />
         </div>
       </div>
     </FadeContent>

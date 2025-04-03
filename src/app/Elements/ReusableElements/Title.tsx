@@ -5,12 +5,14 @@ interface TitleProps {
   value: string;
   separated?: boolean;
   shiny?: boolean;
+  variant?: "small" | "big";
 }
 
 export const Title: React.FC<TitleProps> = ({
   value,
   separated = false,
   shiny = false,
+  variant = "big",
 }) => {
   return (
     <div className="">
@@ -19,13 +21,21 @@ export const Title: React.FC<TitleProps> = ({
           text={value}
           disabled={false}
           speed={5}
-          className={`text-4xl md:text-5xl lg:text-7xl font-bold text-[var(--texts)] ${
+          className={`font-bold text-[var(--texts)] ${
             separated ? "tracking-widest" : ""
+          } ${
+            variant === "small"
+              ? "text-4xl md:text-5xl lg:text-6xl"
+              : "text-4xl md:text-5xl lg:text-6xl"
           }`}
         />
       ) : (
         <h1
-          className="text-4xl md:text-5xl lg:text-7xl font-bold text-[var(--texts)]"
+          className={`font-bold text-[var(--texts)] ${
+            variant === "small"
+              ? "text-xl md:text-3xl lg:text-5xl"
+              : "text-4xl md:text-5xl lg:text-6xl"
+          }`}
           style={{
             letterSpacing: separated ? "0.1em" : "normal",
           }}

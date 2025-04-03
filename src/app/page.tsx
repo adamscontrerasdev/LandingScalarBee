@@ -152,7 +152,7 @@ export default function Home() {
         </div>
 
         <motion.div
-          className="absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 z-10 pointer-events-none"
+          className="absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: hasScrolledSections.beneficios ? 1 : 0 }}
           transition={{ type: "spring", stiffness: 120, damping: 15 }}
@@ -170,7 +170,7 @@ export default function Home() {
         </motion.div>
 
         <div
-          className=" to-transparent absolute top-[46%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 z-10 pointer-events-none"
+          className=" to-transparent absolute top-[46%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
           style={{
             background:
               "linear-gradient(to top, var(--foreground)2%, transparent 20%)",
