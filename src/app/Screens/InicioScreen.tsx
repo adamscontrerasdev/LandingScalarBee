@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Content } from "../components";
 import { useTheme } from "../Hooks/themeContext";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import { PropsForScreens } from "../Types";
 
 export const InicioScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
   const { isDarkMode } = useTheme();
+  const [isMobile, setIsMobile] = useState(false);
 
   return (
     <motion.div
@@ -16,7 +17,7 @@ export const InicioScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
       initial={{ filter: "blur(0px)", pointerEvents: "auto", scale: 1 }}
       animate={{
         pointerEvents: !isFocus ? "none" : "auto",
-        scale: !isFocus ? 0.5 : 1,
+        scale: !isMobile ? (!isFocus ? 0.5 : 1) : 1,
       }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
