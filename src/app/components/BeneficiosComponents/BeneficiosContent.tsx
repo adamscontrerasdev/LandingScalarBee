@@ -62,11 +62,11 @@ const benefits = [
 const Card: React.FC<BeneficiosProps> = ({ benefit, order }) => {
   return (
     <div
-      className={`w-full h-full flex justify-center items-center py-20 px-40  ${
-        order === 0 ? "flex-row-reverse" : "flex-row"
+      className={`w-full h-full flex flex-col lg:flex-row justify-center items-center lg:py-20 lg:px-40 relative ${
+        order === 0 ? "lg:flex-row-reverse" : "lg:flex-row"
       }`}
     >
-      <div className={`w-1/2 h-full flex justify-center items-center `}>
+      <div className={`lg:w-1/2 h-full flex justify-center items-center `}>
         <Image
           src={benefit.image}
           width={1920}
@@ -75,8 +75,8 @@ const Card: React.FC<BeneficiosProps> = ({ benefit, order }) => {
           className="w-full h-full object-contain"
         />
       </div>
-      <div className="w-1/2 h-full flex flex-col justify-center items-start gap-2 p-5 ">
-        <Title value={benefit.title} variant="small" />
+      <div className="lg:w-1/2 h-full flex flex-col justify-center items-start gap-2 p-5 ">
+        <Title value={benefit.title} variant="small" left />
         <p className="text-sm text-gray-500">{benefit.description}</p>
         <ButtonPrimary
           text={benefit.TextButton}
@@ -87,15 +87,16 @@ const Card: React.FC<BeneficiosProps> = ({ benefit, order }) => {
           notify={benefit.TextButton === "Activar notificaciones"}
         />
       </div>
+      <div className="bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent w-full max-w-3xl h-[1px] absolute bottom-0 left-1/2 -translate-x-1/2" />
     </div>
   );
 };
 
 export const BeneficiosContent = () => {
   return (
-    <div className=" flex flex-col justify-start items-center gap-10 rounded-3xl   w-full relative">
+    <div className=" flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative">
       <Title value="Más control, menos esfuerzo" shiny redirect="#beneficios" />
-      <div className=" w-full min-h-20  flex flex-col justify-center items-center ">
+      <div className=" w-full min-h-20  flex flex-col justify-center items-center px-5 md:px-0">
         {benefits.map((benefit, index) => (
           <Card key={index} benefit={benefit} order={index % 2 === 0 ? 1 : 0} />
         ))}

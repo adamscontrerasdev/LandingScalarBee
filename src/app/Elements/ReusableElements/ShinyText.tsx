@@ -18,7 +18,7 @@ export const ShinyText: React.FC<ShinyTextProps> = ({
 }) => {
   return (
     <span
-      className={`inline-block ${className}`}
+      className={`inline-block ${className} text-center lg:text-left`}
       style={{
         color: color,
         backgroundImage:

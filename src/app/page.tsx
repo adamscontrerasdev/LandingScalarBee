@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { useIsMobile } from "./Hooks/useIsMobile";
 import {
   InicioScreen,
   BeneficiosScreen,
@@ -14,15 +15,18 @@ export default function Home() {
   const isScrolling = useRef(false);
   const [hasScrolledSections, setHasScrolledSections] = useState({
     beneficios: false,
-    servicios: false,
+    funciones: false,
     lastcta: false,
     contact: false,
   });
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const touchStartY = useRef<number | null>(null);
+  const touchEndY = useRef<number | null>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (currentIndex === 0 && scrollRef.current) {
-      scrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
+      scrollRef.current.scrollTo({ top: 0 });
     }
   }, [currentIndex]);
 
@@ -100,20 +104,78 @@ export default function Home() {
     }
   };
 
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    touchEndY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = () => {
+    if (
+      touchStartY.current === null ||
+      touchEndY.current === null ||
+      isScrolling.current
+    )
+      return;
+
+    const deltaY = touchStartY.current - touchEndY.current;
+    const threshold = 20; // sensibilidad mínima para considerar swipe
+
+    const section = document.querySelector(
+      `#${sectionIds[currentIndex]}`
+    ) as HTMLElement;
+    const scrollableDiv = section?.querySelector(
+      ".scrollable-content"
+    ) as HTMLElement;
+
+    if (scrollableDiv) {
+      const atTop = scrollableDiv.scrollTop === 0;
+      const atBottom =
+        Math.ceil(scrollableDiv.scrollTop + scrollableDiv.clientHeight) >=
+        scrollableDiv.scrollHeight;
+
+      if (deltaY > threshold && atBottom) {
+        scrollToSection(currentIndex + 1);
+      } else if (deltaY < -threshold && atTop) {
+        scrollToSection(currentIndex - 1);
+      }
+    } else {
+      if (deltaY > threshold) {
+        scrollToSection(currentIndex + 1);
+      } else if (deltaY < -threshold) {
+        scrollToSection(currentIndex - 1);
+      }
+    }
+
+    touchStartY.current = null;
+    touchEndY.current = null;
+  };
+
   useEffect(() => {
     const hash = window.location.hash.slice(1);
     const initialIndex = sectionIds.indexOf(hash);
     if (initialIndex !== -1) setCurrentIndex(initialIndex);
 
     window.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd);
 
     return () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
       window.removeEventListener("wheel", handleWheel);
     };
   }, [currentIndex]);
 
+  const durationTime = 0.3;
+
   return (
-    <div className="relative h-screen overflow-hidden" aria-live="polite">
+    <div className="relative h-[100dvh] overflow-hidden" aria-live="polite">
       {/* InicioScreen - Siempre visible en el fondo */}
       <div
         className="fixed top-0 left-0 w-full h-full z-0"
@@ -137,7 +199,11 @@ export default function Home() {
           boxShadow:
             currentIndex >= 1 ? "0px 0px 50px var(--background)" : "none",
         }}
-        transition={{ type: "spring", stiffness: 120, damping: 15 }}
+        transition={
+          isMobile
+            ? { duration: durationTime }
+            : { type: "spring", stiffness: 120, damping: 15 }
+        }
         className={`absolute w-full h-full left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
           currentIndex !== 1 ? "fixed" : ""
         }`}
@@ -155,13 +221,17 @@ export default function Home() {
           className="absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: hasScrolledSections.beneficios ? 1 : 0 }}
-          transition={{ type: "spring", stiffness: 120, damping: 15 }}
+          transition={
+            isMobile ? {} : { type: "spring", stiffness: 120, damping: 15 }
+          }
         >
           <motion.div
             className="absolute inset-0 rounded-t-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: hasScrolledSections.beneficios ? 1 : 0.2 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+            transition={
+              isMobile ? {} : { type: "spring", stiffness: 120, damping: 15 }
+            }
             style={{
               background:
                 "linear-gradient(to bottom, var(--foreground) 2%, transparent 20%)",
@@ -178,32 +248,36 @@ export default function Home() {
         ></div>
       </motion.div>
 
-      {/* ServiciosScreen */}
+      {/* FuncionesScreen */}
       <motion.div
-        key="servicios"
+        key="funciones"
         initial={{ y: "100%" }}
         animate={{
           y: currentIndex >= 2 ? "96px" : "100%",
           background: currentIndex >= 2 ? bgtodos : "var(--background)",
         }}
-        transition={{ type: "spring", stiffness: 120, damping: 15 }}
-        className={`absolute w-full h-full  left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
+        transition={
+          isMobile
+            ? { duration: durationTime }
+            : { type: "spring", stiffness: 120, damping: 15 }
+        }
+        className={`absolute w-full h-full left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
           currentIndex !== 2 ? "fixed" : ""
         }`}
-        id="servicios"
+        id="funciones"
       >
         <div
           className="scrollable-content  absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
-          onScroll={(e) => handleScroll(e, "servicios")}
+          onScroll={(e) => handleScroll(e, "funciones")}
         >
           <FuncionesScreen isFocus={currentIndex === 2} />
         </div>
         <div
-          className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 z-10 pointer-events-none"
+          className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to bottom, var(--foreground), transparent)",
-            opacity: hasScrolledSections.servicios ? 1 : 0,
+              "linear-gradient(to bottom, var(--foreground) 0%, transparent 10%) ",
+            opacity: hasScrolledSections.funciones ? 1 : 0,
             transition: "opacity 0.2s ease-in-out",
           }}
         ></div>
@@ -217,7 +291,11 @@ export default function Home() {
           y: currentIndex >= 3 ? "112px" : "100%",
           background: currentIndex >= 3 ? bgtodos : "var(--background)",
         }}
-        transition={{ type: "spring", stiffness: 120, damping: 15 }}
+        transition={
+          isMobile
+            ? { duration: durationTime }
+            : { type: "spring", stiffness: 120, damping: 15 }
+        }
         className={`absolute w-full h-full  left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
           currentIndex !== 3 ? "fixed" : ""
         }`}
@@ -248,7 +326,11 @@ export default function Home() {
           y: currentIndex >= 4 ? "128px" : "100%",
           background: currentIndex >= 4 ? bgtodos : "var(--background)",
         }}
-        transition={{ type: "spring", stiffness: 120, damping: 15 }}
+        transition={
+          isMobile
+            ? { duration: durationTime }
+            : { type: "spring", stiffness: 120, damping: 15 }
+        }
         className={`absolute w-full h-full overflow-y-visible overflow-x-hidden left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
           currentIndex !== 4 ? "fixed" : ""
         }`}
@@ -281,7 +363,11 @@ export default function Home() {
           background:
             currentIndex === 0 ? "var(--background)" : "var(--foreground)",
         }}
-        transition={{ type: "spring", stiffness: 120, damping: 15 }}
+        transition={
+          isMobile
+            ? { duration: durationTime }
+            : { type: "spring", stiffness: 120, damping: 15 }
+        }
         id={sectionIds[1]}
       >
         <h2>{sectionIds[1]}</h2>
@@ -305,7 +391,11 @@ export default function Home() {
                 : "var(--background)"
               : "var(--background)",
         }}
-        transition={{ type: "spring", stiffness: 120, damping: 15 }}
+        transition={
+          isMobile
+            ? { duration: durationTime }
+            : { type: "spring", stiffness: 120, damping: 15 }
+        }
         id={sectionIds[2]}
       >
         <h2>{sectionIds[2]}</h2>
@@ -329,7 +419,11 @@ export default function Home() {
                 : "var(--background)"
               : "var(--background)",
         }}
-        transition={{ type: "spring", stiffness: 120, damping: 15 }}
+        transition={
+          isMobile
+            ? { duration: durationTime }
+            : { type: "spring", stiffness: 120, damping: 15 }
+        }
         id={sectionIds[3]}
       >
         <h2>{sectionIds[3]}</h2>
@@ -353,7 +447,11 @@ export default function Home() {
                 : "var(--background)"
               : "var(--background)",
         }}
-        transition={{ type: "spring", stiffness: 120, damping: 15 }}
+        transition={
+          isMobile
+            ? { duration: durationTime }
+            : { type: "spring", stiffness: 120, damping: 15 }
+        }
         id={sectionIds[4]}
       >
         <h2>{sectionIds[4]}</h2>

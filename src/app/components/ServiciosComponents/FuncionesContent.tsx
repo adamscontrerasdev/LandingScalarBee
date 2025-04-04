@@ -1,4 +1,4 @@
-import { SubTitle, Title } from "@/app/Elements";
+import { Title } from "@/app/Elements";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { FaUser } from "react-icons/fa";
@@ -7,6 +7,8 @@ import { FaUserTag } from "react-icons/fa6";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { GiAutoRepair } from "react-icons/gi";
 import { GiWorld } from "react-icons/gi";
+import { useIsMobile } from "./../../Hooks/useIsMobile";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Sections = [
   {
@@ -118,7 +120,7 @@ interface TestiMoniosProps {
 
 const TestiMoniosCard: React.FC<TestiMoniosProps> = ({ name, text, img }) => {
   return (
-    <div className="flex flex-col gap-2 rounded-2xl p-4 bg-[var(--background)] ">
+    <div className="flex flex-col gap-2 rounded-2xl p-4 bg-[var(--background)] min-w-80">
       <div className="flex gap-2 items-center">
         <div className="w-10 h-10 rounded-full bg-neutral-500 ">
           {img ? (
@@ -145,11 +147,15 @@ export const FuncionesContent = () => {
   const [width, setWidth] = useState(0);
   const [selectedSection, setSelectedSection] = useState<section>(Sections[0]);
   const infoColRef = useRef<HTMLDivElement>(null);
+  const [widthItemsMenu, setWidthItemsMenu] = useState(0);
+  const carouselRefItemsMenu = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+  const [isOpen, setIsOpen] = useState(false);
 
   const SectionMenuItem: React.FC<sectionPathProps> = ({ section }) => {
     return (
       <div
-        className="w-full flex gap-2 rounded-xl p-3 bg-[var(--foreground)] min-w-20 max-w-40 justify-start items-center cursor-pointer hover:scale-105 transition-all duration-200 ease-in-out"
+        className="w-full flex gap-2 rounded-2xl md:p-3 p-1 px-4 bg-[var(--foreground)]  justify-start items-center cursor-pointer hover:scale-105 transition-all duration-200 ease-in-out"
         onClick={() => setSelectedSection(section)}
       >
         <section.icon
@@ -177,12 +183,47 @@ export const FuncionesContent = () => {
   };
 
   useEffect(() => {
-    if (!carouselRef.current) return;
-    if (carouselRef.current) {
-      setWidth(
-        carouselRef.current.scrollWidth - carouselRef.current.offsetWidth
-      );
-    }
+    const widthCalculate = () => {
+      if (!carouselRef.current) return;
+      if (carouselRef.current) {
+        console.log(
+          carouselRef.current.scrollWidth,
+          carouselRef.current.offsetWidth
+        );
+
+        setWidth(
+          carouselRef.current.scrollWidth - carouselRef.current.offsetWidth
+        );
+      }
+    };
+    widthCalculate();
+    window.addEventListener("resize", widthCalculate);
+    return () => {
+      window.removeEventListener("resize", widthCalculate);
+    };
+  }, []);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      const el = carouselRefItemsMenu.current;
+
+      if (!el) return;
+
+      const scrollWidth = el.scrollWidth;
+      const offsetWidth = el.offsetWidth;
+      const newWidth = scrollWidth - offsetWidth;
+      console.log(scrollWidth, offsetWidth);
+
+      setWidthItemsMenu(newWidth);
+    };
+
+    updateWidth();
+
+    window.addEventListener("resize", updateWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    };
   }, []);
 
   useEffect(() => {
@@ -221,20 +262,32 @@ export const FuncionesContent = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) {
+      infoColRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [isOpen]);
+
   return (
-    <div className=" flex flex-col justify-start items-center gap-10 rounded-3xl   w-full relative">
+    <div className=" flex flex-col justify-center items-center gap-5 lg:gap-10 rounded-3xl w-full relative">
       <Title value="Una plataforma simple, potente y eficaz" shiny />
-      <div className="w-full h-80 flex justify-center  gap-5 rounded-3xl relative px-5">
+      <div className="w-full  md:h-80 flex-col md:flex-row flex justify-center items-center  gap-5 rounded-3xl relative max-w-7xl px-5 ">
         {/* Columna izquierda */}
         <div
-          className="w-80 bg-[var(--background)] rounded-2xl flex flex-col justify-center items-center gap-2 h-full"
-          style={{
-            boxShadow: "0px 0px 10px 1px var(--shadow)",
-          }}
+          className="w-full md:w-80 max-w-96 bg-[var(--background)]  relative rounded-2xl md:flex md:flex-col justify-start items-center md:justify-center gap-2 h-10 md:h-80 overflow-hidden "
+          style={{ boxShadow: "0px 0px 10px 1px var(--shadow)" }}
         >
-          {Sections.map((section, index) => (
-            <SectionMenuItem key={index} section={section} />
-          ))}
+          <motion.div
+            ref={carouselRefItemsMenu}
+            className="flex gap-3 cursor-grab m-auto h-full md:flex-col md:justify-center md:items-center"
+            drag={isMobile ? "x" : false}
+            dragConstraints={{ left: isMobile ? -widthItemsMenu : 0, right: 0 }}
+            whileTap={isMobile ? { cursor: "grabbing" } : {}}
+          >
+            {Sections.map((section, index) => (
+              <SectionMenuItem key={index} section={section} />
+            ))}
+          </motion.div>
         </div>
 
         {/* Contenedor del video */}
@@ -256,16 +309,26 @@ export const FuncionesContent = () => {
 
         {/* Columna derecha */}
         <div
-          className="w-80 bg-[var(--background)] rounded-2xl flex justify-center h-80 p-2 overflow-auto "
+          role="button"
+          className={`w-full max-w-xl md:w-80 bg-[var(--background)] rounded-2xl flex justify-center py-2 px-4 ${
+            isOpen
+              ? "h-80 overflow-auto md:h-80 md:overflow-auto"
+              : "h-10 overflow-hidden md:h-80 md:overflow-auto active:scale-95 md:active:scale-100"
+          } `}
           ref={infoColRef}
           style={{
             boxShadow: "0px 0px 10px 1px var(--shadow)",
+            transition: "height 0.3s ease-in-out",
           }}
+          onClick={() => setIsOpen(!isOpen)}
         >
           {selectedSection ? (
-            <div className="flex flex-col justify-start items-start gap-4 w-full rounded-2xl p-4">
-              <h2 className="text-[var(--texts)] font-bold text-xl xl:text-3xl mb-2">
-                {selectedSection.title}
+            <div className="flex flex-col justify-start items-start gap-4 w-full rounded-2xl ">
+              <h2 className="text-[var(--texts)] font-bold text-xl xl:text-3xl mb-2 flex items-center justify-between w-full">
+                {selectedSection.title}{" "}
+                {isMobile ? (
+                  <IoIosArrowDown className={`${isOpen ? "rotate-180" : ""}`} />
+                ) : null}
               </h2>
               {selectedSection.description.map((text, index) => {
                 const isList =
@@ -302,38 +365,40 @@ export const FuncionesContent = () => {
           )}
         </div>
       </div>
+      <div className="w-full max-w-7xl px-5 flex flex-col gap-5">
+        <div className="w-full ">
+          <Title value="Nuestros clientes dicen:" left variant="small"></Title>
+        </div>
 
-      <div className="w-full max-w-2xl">
-        <SubTitle value="Nuestro clientes dicen"></SubTitle>
-      </div>
-      <div className="overflow-hidden w-full max-w-3xl mx-auto relative">
-        <motion.div
-          ref={carouselRef}
-          className="flex gap-3 cursor-grab"
-          drag="x"
-          dragConstraints={{ left: -width, right: 0 }}
-          whileTap={{ cursor: "grabbing" }}
-        >
-          {testimonios.map(({ name, text, img }, index) => (
-            <TestiMoniosCard key={index} name={name} text={text} img={img} />
-          ))}
-        </motion.div>
-        <div
-          className="absolute top-0 left-0  w-full pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to right, var(--foreground) 0%, transparent 7%)",
-            height: "200%",
-          }}
-        ></div>
-        <div
-          className="absolute top-0 left-0  w-full pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to left, var(--foreground) 0%, transparent 7%)",
-            height: "200%",
-          }}
-        ></div>
+        <div className="overflow-hidden w-full  mx-auto relative">
+          <motion.div
+            ref={carouselRef}
+            className="flex gap-3 cursor-grab"
+            drag="x"
+            dragConstraints={{ left: -width, right: 0 }}
+            whileTap={{ cursor: "grabbing" }}
+          >
+            {testimonios.map(({ name, text, img }, index) => (
+              <TestiMoniosCard key={index} name={name} text={text} img={img} />
+            ))}
+          </motion.div>
+          <div
+            className="absolute top-0 left-0  w-full pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to right, var(--foreground) 0%, transparent 2%)",
+              height: "200%",
+            }}
+          ></div>
+          <div
+            className="absolute top-0 left-0  w-full pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to left, var(--foreground) 0%, transparent 2%)",
+              height: "200%",
+            }}
+          ></div>
+        </div>
       </div>
     </div>
   );

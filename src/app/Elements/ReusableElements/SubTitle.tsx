@@ -14,7 +14,7 @@ export const SubTitle = ({ value }: { value: string }) => {
   );
 
   return (
-    <h2 className="text-[1.4rem] font-bold text-[var(--texts)]">
+    <h2 className={`md:text-[1.4rem] font-bold text-[var(--texts)]`}>
       {parsedText}
     </h2>
   );

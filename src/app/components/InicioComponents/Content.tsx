@@ -16,7 +16,7 @@ export const Content = () => {
       className=" h-full flex flex-col lg:flex-row-reverse justify-center items-center  rounded-2xl  z-10"
     >
       {/* Imagen Arriba en Mobile, Derecha en Desktop */}
-      <div className="w-full h-1/2 md:h-auto flex justify-center lg:justify-start items-center ">
+      <div className="w-full h-1/2 lg:h-auto flex justify-center lg:justify-start items-center ">
         <Image
           src={
             isDarkMode
@@ -40,7 +40,7 @@ export const Content = () => {
             borderRadius: "20px 0 0 0",
           }}
         >
-          <Title value="Optimiza tu negocio de reparación con la mejor gestión" />
+          <Title value="Optimiza tu negocio de reparación con la mejor gestión" left />
           <SubTitle value="!Organiza!, delega y crece sin perder el control" />
 
           <ButtonPrimary text="Prueba gratis por 14 días" />

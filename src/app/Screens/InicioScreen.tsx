@@ -11,11 +11,10 @@ export const InicioScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
 
   return (
     <motion.div
-      className="w-screen h-screen flex justify-center items-center overflow-hidden md:py-20 pt-20 px-3 md:px-10 xl:px-52 fixed top-0 left-0 z-0 "
+      className="w-screen h-[100dvh] flex justify-center items-center overflow-hidden md:py-20 pt-20 px-3 md:px-10 xl:px-52 fixed top-0 left-0 z-0 "
       id="Inicio"
       initial={{ filter: "blur(0px)", pointerEvents: "auto", scale: 1 }}
       animate={{
-        filter: !isFocus ? "blur(50px)" : "blur(0px)",
         pointerEvents: !isFocus ? "none" : "auto",
         scale: !isFocus ? 0.5 : 1,
       }}
