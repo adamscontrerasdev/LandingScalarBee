@@ -11,7 +11,7 @@ export * from "./BeneficiosComponents/BeneficiosContent";
 export * from "./NosotrosComponents/ContentNosotros";
 
 //Services components
-export * from "./ServiciosComponents/ServiciciosContent";
+export * from "./ServiciosComponents/FuncionesContent";
 
 //Testimonios components
 export * from "./TestimoniosComponents/TestimoniosContent";

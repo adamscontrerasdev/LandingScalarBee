@@ -6,6 +6,7 @@ interface TitleProps {
   separated?: boolean;
   shiny?: boolean;
   variant?: "small" | "big";
+  redirect?: string;
 }
 
 export const Title: React.FC<TitleProps> = ({
@@ -13,9 +14,17 @@ export const Title: React.FC<TitleProps> = ({
   separated = false,
   shiny = false,
   variant = "big",
+  redirect,
 }) => {
+  const RedirecTo = (url: string) => () => {
+    window.location.href = url;
+  };
+
   return (
-    <div className="">
+    <div
+      className={`redirect ${redirect ? "cursor-pointer" : ""}`}
+      onClick={RedirecTo(redirect || "/")}
+    >
       {shiny ? (
         <ShinyText
           text={value}

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import {
   InicioScreen,
   BeneficiosScreen,
-  ServiciosScreen,
+  FuncionesScreen,
   LastCtaScreen,
   ContactScreen,
 } from "./Screens";
@@ -41,7 +41,7 @@ export default function Home() {
   const sectionIds = [
     "inicio",
     "beneficios",
-    "servicios",
+    "funciones",
     "lastcta",
     "contact",
   ];
@@ -196,7 +196,7 @@ export default function Home() {
           className="scrollable-content  absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
           onScroll={(e) => handleScroll(e, "servicios")}
         >
-          <ServiciosScreen isFocus={currentIndex === 2} />
+          <FuncionesScreen isFocus={currentIndex === 2} />
         </div>
         <div
           className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 z-10 pointer-events-none"
@@ -288,7 +288,7 @@ export default function Home() {
       </motion.div>
 
       <motion.div
-        className={`w-28 h-10 bg-[#f00] absolute left-40 z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
+        className={`w-28 h-10  absolute left-40 z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
         onClick={() => scrollToSection(2)}
         initial={{ top: "100vh" }}
         animate={{
@@ -312,7 +312,7 @@ export default function Home() {
       </motion.div>
 
       <motion.div
-        className={`w-28 h-10 bg-[#000] absolute left-[17.5rem] z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
+        className={`w-28 h-10  absolute left-[17.5rem] z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
         onClick={() => scrollToSection(3)}
         initial={{ top: "100vh" }}
         animate={{
@@ -335,7 +335,7 @@ export default function Home() {
         <h2>{sectionIds[3]}</h2>
       </motion.div>
       <motion.div
-        className={`w-28 h-10 bg-[#f00] absolute  left-[25rem] 
+        className={`w-28 h-10 absolute  left-[25rem] 
           z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
         onClick={() => scrollToSection(4)}
         initial={{ top: "100vh" }}
