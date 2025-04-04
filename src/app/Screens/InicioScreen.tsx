@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Content } from "../components";
 import { useTheme } from "../Hooks/themeContext";
 import Image from "next/image";
