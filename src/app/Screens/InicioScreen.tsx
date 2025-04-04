@@ -5,10 +5,11 @@ import { useTheme } from "../Hooks/themeContext";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { PropsForScreens } from "../Types";
+import { useIsMobile } from "../Hooks/useIsMobile";
 
 export const InicioScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
   const { isDarkMode } = useTheme();
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
 
   return (
     <motion.div
