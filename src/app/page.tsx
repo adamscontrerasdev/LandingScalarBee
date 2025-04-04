@@ -194,7 +194,7 @@ export default function Home() {
         }}
         animate={{
           y: currentIndex >= 1 ? "80px" : "80%",
-          width: currentIndex >= 1 ? "100%" : "95%",
+
           background: currentIndex >= 1 ? bgtodos : "var(--background)",
           boxShadow:
             currentIndex >= 1 ? "0px 0px 50px var(--background)" : "none",
