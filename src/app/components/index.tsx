@@ -30,4 +30,3 @@ export * from "./ReusableComponents/ScrollReveal";
 export * from "./ReusableComponents/SpotlightCard";
 export * from "./ReusableComponents/InfiniteMenu";
 export * from "./ReusableComponents/ShapeBlur";
-export * from "./ReusableComponents/CircularText";

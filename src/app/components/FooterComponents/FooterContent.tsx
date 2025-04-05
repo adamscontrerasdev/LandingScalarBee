@@ -1,67 +1,39 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
+import { SubTitle } from "@/app/Elements/ReusableElements/SubTitle";
+import Link from "next/link";
+import { useTheme } from "@/app/Hooks/themeContext";
 
-interface FooterContentProps {
-  fatherTop: number;
-}
-
-export const FooterContent: React.FC<FooterContentProps> = ({ fatherTop }) => {
-  useEffect(() => {}, [fatherTop]);
-
+export const FooterContent = ({}) => {
+  const { isDarkMode } = useTheme();
   return (
     <div
-      className="w-full h-full bg-neutral-900/50 backdrop-blur-sm flex flex-col justify-start items-start p-10 sm:p-16 lg:p-20 overflow-x-hidden"
-      style={{ borderRadius: "1.4rem 1.4rem 0 0" }}
+      className=" w-full h-50 max-w-2xl  bottom-0 left-0 flex justify-center items-center gap-10  py-5 relative rounded-xl shadow-md bg-[var(--background)]"
+      style={{
+        background:
+          "linear-gradient(to bottom, var(--background) 0%, transparent 50%)",
+      }}
     >
-      <h2 className="text-lg sm:text-xl font-bold text-white mb-6">
-        All rights reserved by ScalarBee®.
-      </h2>
+      <img
+        src={
+          isDarkMode
+            ? "/Img/Logo scalarbee/bee-logo-white.png"
+            : "/Img/Logo scalarbee/bee-logo-black.png"
+        }
+        width={200}
+        height={50}
+        alt="logo"
+        className="w-10 h-10 object-contain absolute top-5  left-5 bg-[var(--foreground)] rounded-xl"
+      />
 
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {[
-          {
-            title: "Company",
-            links: ["About Us", "Careers", "Blog", "Press"],
-          },
-          {
-            title: "Support",
-            links: ["Help Center", "FAQs", "Documentation", "Community"],
-          },
-          {
-            title: "Legal",
-            links: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
-          },
-          {
-            title: "Resources",
-            links: [
-              "API Documentation",
-              "Developer Portal",
-              "Pricing",
-              "Affiliate Program",
-            ],
-          },
-        ].map((section, index) => (
-          <div key={index}>
-            <h3 className="text-base sm:text-lg font-semibold text-white">
-              {section.title}
-            </h3>
-            <ul className="text-sm text-neutral-200">
-              {section.links.map((link, i) => (
-                <li key={i}>
-                  <a href="#" className="hover:text-neutral-100">
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+      <div className="w-full min-h-20 py-10   relative flex-col justify-center items-center gap-2 px-5">
+        <SubTitle value="©2025 all rights reserved by ZazBee." center />
+        <div className=" flex gap-1 text-xs md:text-base text-[var(--texts)] justify-center items-center">
+          <Link href={""}> Política de privacidad</Link>|
+          <Link href={""}> Condiciones de uso</Link>|
+          <Link href={""}> Aviso legal</Link>
+        </div>
       </div>
-
-      <p className="text-sm text-neutral-200 mt-8">
-        ScalarBee® is committed to providing exceptional services with
-        transparency and integrity.
-      </p>
     </div>
   );
 };

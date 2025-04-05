@@ -6,6 +6,8 @@ interface ButtonPrimaryProps {
   className?: string;
   style?: React.CSSProperties;
   notify?: boolean;
+  variant?: "fill" | "outline";
+  leve?: boolean;
 }
 
 export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
@@ -13,16 +15,24 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
   className,
   style,
   notify = false,
+  variant,
+  leve = false,
 }) => {
   return (
     <Magnet
       padding={200}
       disabled={false}
-      magnetStrength={20}
+      magnetStrength={!leve ? 20 : 50}
       className="relative overflow-visible w-full"
     >
       <button
-        className={`text-base font-bold bg-[var(--foreground)] rounded-xl cursor-pointer hover:scale-105 transition-all duration-500 relative z-[99999] text-[var(--texts)] ${className} p-3 text-base md:text-xl`}
+        className={`text-base font-bold rounded-xl cursor-pointer hover:scale-105 transition-all duration-500 relative z-[99999] text-[var(--texts)] ${className} p-3 text-base md:text-xl ${
+          variant
+            ? variant === "fill"
+              ? "bg-[var(--primary)]"
+              : "bg-transparent border-[var(--primary)] border-2"
+            : "bg-[var(--foreground)]"
+        }`}
         style={style}
       >
         {text}

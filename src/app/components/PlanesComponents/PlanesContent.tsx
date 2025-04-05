@@ -17,6 +17,10 @@ const Planes = [
       "Notificaciones automáticas",
     ],
     destacado: false,
+    montPriceFix: 80,
+    get priceYearFix() {
+      return this.montPriceFix * 12;
+    },
   },
   {
     title: "Premium",
@@ -32,6 +36,10 @@ const Planes = [
       "Soporte prioritario",
     ],
     destacado: true,
+    montPriceFix: 100,
+    get priceYearFix() {
+      return this.montPriceFix * 12;
+    },
   },
   {
     title: "Ultimate",
@@ -47,6 +55,10 @@ const Planes = [
       "Asesoramiento técnico dedicado",
     ],
     destacado: false,
+    montPriceFix: 200,
+    get priceYearFix() {
+      return this.montPriceFix * 12;
+    },
   },
 ];
 
@@ -59,30 +71,42 @@ interface Plan {
     benefit: string[];
     destacado: boolean;
     MontPrice: number;
+    montPriceFix: number;
+    priceYearFix: number;
   };
+  yearly: boolean;
 }
 
-const PlanesCard: React.FC<Plan> = ({ plan }) => {
+const PlanesCard: React.FC<Plan> = ({ plan, yearly }) => {
   return (
     <div
-      className={`w-1/3 h-full flex flex-col justify-center items-center ${
+      className={`w-full max-w-80 lg:w-1/3 h-full flex flex-col justify-center items-center ${
         plan.destacado ? "bg-[var(--primary)]" : ""
-      } p-0.5 rounded-2xl`}
+      } p-0.5 rounded-2xl  shadow-md`}
+      style={{
+        boxShadow: "0px 0px 10px var(--shadow)",
+      }}
     >
       <h2 className={plan.destacado ? "opacity-100" : "opacity-0"}>
-        Mas vendido
+        Mas Popular
       </h2>
       <div className="h-full w-full bg-[var(--background)] rounded-2xl p-2 text-[var(--texts)] flex flex-col justify-start items-start">
         <div className="text-xl w-full font-bold  bg-[var(--foreground)] text-center flex flex-col justify-center items-start rounded-2xl p-5">
           <p className="font-light">{plan.title}</p>
-          <h1 className="font-extrabold text-3xl">${plan.price}/año</h1>
+          <h1 className="font-extrabold text-3xl">
+            {yearly ? `$${plan.price}/año` : `$${plan.montPriceFix}/mes`}
+          </h1>
           <p className="font-extralight !text-[var(--primary)] ">
-            ${plan.MontPrice.toFixed(2)}/mes
+            {yearly
+              ? `$${plan.MontPrice.toFixed(2)}/mes`
+              : `$${plan.priceYearFix}/año`}
           </p>
           <div className="w-full">
             <ButtonPrimary
               text={plan.TextButton}
               className="w-full bg-[var(--primary)]"
+              variant={plan.destacado ? "fill" : "outline"}
+              leve
             ></ButtonPrimary>
           </div>
         </div>
@@ -107,22 +131,22 @@ const PlanesCard: React.FC<Plan> = ({ plan }) => {
 export const PlanesContent = () => {
   const [isYearly, setIsYearly] = useState(true);
   return (
-    <div className="flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative">
-      <div className="flex gap-4 items-center justify-center">
+    <div className="flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative ">
+      <div className="flex flex-col items-center justify-center">
         <Title value="Planes a Tu Medida" shiny />
         <button
           onClick={() => setIsYearly(!isYearly)}
-          className="relative px-4 py-1 rounded-full border border-[var(--primary)] text-[var(--primary)] text-sm font-semibold transition duration-300 hover:bg-[var(--primary)] hover:text-white cursor-pointer"
+          className="relative px-4 py-1 rounded-full border border-[var(--primary)] text-[var(--primary)] text-sm font-semibold transition duration-300 hover:bg-[var(--primary)] hover:text-white cursor-pointer  "
         >
           {isYearly ? "Por año" : "Por mes"}
-          <span className="absolute -top-2 -right-14 text-xs bg-[var(--primary)] text-white rounded-full px-2 py-0.5 animate-pulse">
+          <span className="absolute top-1/2 -right-10 text-xs bg-[var(--primary)] text-white rounded-full px-2 py-0.5 animate-pulse">
             Cambiar
           </span>
         </button>
       </div>
-      <div className="w-full h-[50vh]  max-w-7xl flex justify-center items-center gap-5">
+      <div className="w-full lg:h-[50vh]  max-w-7xl flex flex-col lg:flex-row justify-center items-center gap-10 px-5 ">
         {Planes.map((plan, index) => (
-          <PlanesCard key={index} plan={plan} />
+          <PlanesCard key={index} plan={plan} yearly={isYearly} />
         ))}
       </div>
     </div>

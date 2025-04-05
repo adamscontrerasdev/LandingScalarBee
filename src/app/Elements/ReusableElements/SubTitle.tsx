@@ -1,6 +1,12 @@
 import React from "react";
 
-export const SubTitle = ({ value }: { value: string }) => {
+export const SubTitle = ({
+  value,
+  center = false,
+}: {
+  value: string;
+  center?: boolean;
+}) => {
   const regex = /!([^!¡]+)!/g; // Busca texto entre signos de exclamación
 
   const parsedText = value.split(regex).map((part, index) =>
@@ -14,7 +20,11 @@ export const SubTitle = ({ value }: { value: string }) => {
   );
 
   return (
-    <h2 className={`md:text-[1.4rem] font-bold text-[var(--texts)]`}>
+    <h2
+      className={`md:text-[1.4rem] font-bold text-[var(--texts)] ${
+        center ? "text-center" : ""
+      }`}
+    >
       {parsedText}
     </h2>
   );

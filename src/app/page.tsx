@@ -42,13 +42,7 @@ export default function Home() {
       setHasScrolledSections((prev) => ({ ...prev, [section]: false }));
     }
   };
-  const sectionIds = [
-    "inicio",
-    "beneficios",
-    "funciones",
-    "planes",
-    "contact",
-  ];
+  const sectionIds = ["inicio", "beneficios", "funciones", "planes", "contact"];
 
   const bgtodos = "var(--foreground)";
 
@@ -121,7 +115,7 @@ export default function Home() {
       return;
 
     const deltaY = touchStartY.current - touchEndY.current;
-    const threshold = 20; // sensibilidad mínima para considerar swipe
+    const threshold = 10; // sensibilidad mínima para considerar swipe
 
     const section = document.querySelector(
       `#${sectionIds[currentIndex]}`
@@ -190,7 +184,7 @@ export default function Home() {
         initial={{
           y: "100%",
           width: "100%",
-          borderRadius: "20px 20px 0 0",
+          borderRadius: isMobile ? "20px 20px 0 0" : "0 20px 20px 0",
         }}
         animate={{
           y: currentIndex >= 1 ? "80px" : "80%",
@@ -308,10 +302,10 @@ export default function Home() {
           <PlanesScreen isFocus={currentIndex === 3} />
         </div>
         <div
-          className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 z-10 pointer-events-none"
+          className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to bottom, var(--foreground), transparent)",
+              "linear-gradient(to bottom, var(--foreground)0%, transparent 10%)",
             opacity: hasScrolledSections.planes ? 1 : 0,
             transition: "opacity 0.2s ease-in-out",
           }}
@@ -343,10 +337,10 @@ export default function Home() {
           <ContactScreen isFocus={currentIndex === 4} />
         </div>
         <div
-          className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 z-10 pointer-events-none"
+          className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to bottom, var(--foreground), transparent)",
+              "linear-gradient(to bottom, var(--foreground) 0%, transparent 10%)",
             opacity: hasScrolledSections.contact ? 1 : 0,
             transition: "opacity 0.2s ease-in-out",
           }}
@@ -354,7 +348,7 @@ export default function Home() {
       </motion.div>
 
       <motion.div
-        className={`w-28 h-10 absolute  left-10 z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
+        className={`w-28 h-10 absolute left-0  md:left-10 z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
         onClick={() => scrollToSection(1)}
         initial={{ top: "calc(80% - 2.5rem)", opacity: 0 }}
         animate={{
@@ -374,15 +368,17 @@ export default function Home() {
       </motion.div>
 
       <motion.div
-        className={`w-28 h-10  absolute left-40 z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
+        className={`w-28 h-10  absolute left-30 md:left-40 z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
         onClick={() => scrollToSection(2)}
-        initial={{ top: "100vh" }}
+        initial={{ top: "100dvh" }}
         animate={{
           top:
             currentIndex === 0
-              ? "100vh"
+              ? "100dvh"
               : currentIndex >= 2
               ? "3.5rem"
+              : isMobile
+              ? "94dvh"
               : "96vh",
           background:
             currentIndex !== 0
@@ -402,7 +398,7 @@ export default function Home() {
       </motion.div>
 
       <motion.div
-        className={`w-28 h-10  absolute left-[17.5rem] z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
+        className={`w-28 h-10  absolute left-60 md:left-[17.5rem] z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
         onClick={() => scrollToSection(3)}
         initial={{ top: "100vh" }}
         animate={{
@@ -411,6 +407,8 @@ export default function Home() {
               ? "100vh"
               : currentIndex >= 3
               ? "4.5rem"
+              : isMobile
+              ? "94dvh"
               : "96vh",
           background:
             currentIndex !== 0
@@ -428,8 +426,9 @@ export default function Home() {
       >
         <h2>{sectionIds[3]}</h2>
       </motion.div>
+
       <motion.div
-        className={`w-28 h-10 absolute  left-[25rem] 
+        className={`w-28 h-10 absolute left-0 md:left-[25rem] 
           z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
         onClick={() => scrollToSection(4)}
         initial={{ top: "100vh" }}
@@ -439,6 +438,8 @@ export default function Home() {
               ? "100vh"
               : currentIndex >= 4
               ? "5.5rem"
+              : isMobile
+              ? "94dvh"
               : "96vh",
           background:
             currentIndex !== 0

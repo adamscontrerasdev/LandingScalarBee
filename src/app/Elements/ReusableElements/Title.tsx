@@ -44,9 +44,9 @@ export const Title: React.FC<TitleProps> = ({
         <h1
           className={`font-bold text-[var(--texts)] ${
             variant === "small"
-              ? "text-xl md:text-2xl lg:text-3xl"
-              : "text-xl md:text-5xl lg:text-6xl"
-          } text-center lg:text-left ${left ? "text-left" : "text-center"}`}
+              ? "text-3xl md:text-2xl lg:text-3xl"
+              : "text-4xl md:text-5xl lg:text-6xl"
+          } text-center  ${left ? "text-left" : "text-center"}`}
           style={{
             letterSpacing: separated ? "0.1em" : "normal",
           }}
