@@ -1,17 +1,17 @@
 import React from "react";
-import { FuncionesContent } from "../components";
+import { PlanesContent } from "../components";
 import { FolioPageContainer } from "../Elements/ReusableElements/FolioPageContainer";
 import { PropsForScreens } from "../Types";
 
-export const FuncionesScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
+export const PlanesScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
   return (
     <FolioPageContainer
-      sectionTitle="ola"
-      positionOrden={2}
-      id="Servicios"
+      positionOrden={3}
+      sectionTitle="Last"
+      id="Last"
       isFocus={isFocus}
     >
-      <FuncionesContent/>
+      <PlanesContent />
     </FolioPageContainer>
   );
 };

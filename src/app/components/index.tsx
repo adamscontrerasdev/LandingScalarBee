@@ -17,7 +17,7 @@ export * from "./ServiciosComponents/FuncionesContent";
 export * from "./TestimoniosComponents/TestimoniosContent";
 
 //LastCtacomponents
-export * from "./LastCtaComponents/LastCtaContent";
+export * from "./PlanesComponents/PlanesContent";
 
 //Contact components
 export * from "./ContactComponents/ContactContent";

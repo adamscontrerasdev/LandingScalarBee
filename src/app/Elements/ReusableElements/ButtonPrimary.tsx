@@ -19,7 +19,7 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
       padding={200}
       disabled={false}
       magnetStrength={20}
-      className="relative overflow-visible"
+      className="relative overflow-visible w-full"
     >
       <button
         className={`text-base font-bold bg-[var(--foreground)] rounded-xl cursor-pointer hover:scale-105 transition-all duration-500 relative z-[99999] text-[var(--texts)] ${className} p-3 text-base md:text-xl`}

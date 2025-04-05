@@ -120,7 +120,7 @@ interface TestiMoniosProps {
 
 const TestiMoniosCard: React.FC<TestiMoniosProps> = ({ name, text, img }) => {
   return (
-    <div className="flex flex-col gap-2 rounded-2xl p-4 bg-[var(--background)] min-w-80">
+    <div className="flex flex-col gap-2 rounded-2xl p-4 bg-[var(--background)] min-w-80 active:scale-95">
       <div className="flex gap-2 items-center">
         <div className="w-10 h-10 rounded-full bg-neutral-500 ">
           {img ? (
@@ -310,10 +310,10 @@ export const FuncionesContent = () => {
         {/* Columna derecha */}
         <div
           role="button"
-          className={`w-full max-w-xl md:w-80 bg-[var(--background)] rounded-2xl flex justify-center py-2 px-4 ${
+          className={`w-full max-w-xl md:w-80 bg-[var(--background)] rounded-2xl flex justify-center py-2 px-4 sm:cursor-pointer md:cursor-auto ${
             isOpen
               ? "h-80 overflow-auto md:h-80 md:overflow-auto"
-              : "h-10 overflow-hidden md:h-80 md:overflow-auto active:scale-95 md:active:scale-100"
+              : "h-10 overflow-hidden md:h-80 md:overflow-auto active:scale-95 transition-all md:active:scale-100"
           } `}
           ref={infoColRef}
           style={{

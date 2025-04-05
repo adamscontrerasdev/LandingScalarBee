@@ -6,7 +6,7 @@ import {
   InicioScreen,
   BeneficiosScreen,
   FuncionesScreen,
-  LastCtaScreen,
+  PlanesScreen,
   ContactScreen,
 } from "./Screens";
 
@@ -16,7 +16,7 @@ export default function Home() {
   const [hasScrolledSections, setHasScrolledSections] = useState({
     beneficios: false,
     funciones: false,
-    lastcta: false,
+    planes: false,
     contact: false,
   });
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -46,7 +46,7 @@ export default function Home() {
     "inicio",
     "beneficios",
     "funciones",
-    "lastcta",
+    "planes",
     "contact",
   ];
 
@@ -243,7 +243,7 @@ export default function Home() {
           className=" to-transparent absolute top-[46%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to top, var(--foreground)2%, transparent 20%)",
+              "linear-gradient(to top, var(--foreground)2%, transparent 10%)",
           }}
         ></div>
       </motion.div>
@@ -283,9 +283,9 @@ export default function Home() {
         ></div>
       </motion.div>
 
-      {/* LastCtaScreen */}
+      {/* planesScreen */}
       <motion.div
-        key="lastcta"
+        key="planes"
         initial={{ y: "100%" }}
         animate={{
           y: currentIndex >= 3 ? "112px" : "100%",
@@ -299,20 +299,20 @@ export default function Home() {
         className={`absolute w-full h-full  left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
           currentIndex !== 3 ? "fixed" : ""
         }`}
-        id="lastcta"
+        id="planes"
       >
         <div
           className="scrollable-content  absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
-          onScroll={(e) => handleScroll(e, "lastcta")}
+          onScroll={(e) => handleScroll(e, "planes")}
         >
-          <LastCtaScreen isFocus={currentIndex === 3} />
+          <PlanesScreen isFocus={currentIndex === 3} />
         </div>
         <div
           className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 z-10 pointer-events-none"
           style={{
             background:
               "linear-gradient(to bottom, var(--foreground), transparent)",
-            opacity: hasScrolledSections.lastcta ? 1 : 0,
+            opacity: hasScrolledSections.planes ? 1 : 0,
             transition: "opacity 0.2s ease-in-out",
           }}
         ></div>
