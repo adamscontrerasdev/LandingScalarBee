@@ -102,13 +102,13 @@ const testimonios = [
   {
     id: 2,
     name: "FixMasters",
-    text: "Pasamos de anotar en papel a tener todo en la palma de la mano. Control total de clientes, reparaciones y pagos.",
+    text: "“Pasamos de anotar en papel a tener todo en la palma de la mano. Control total de clientes, reparaciones y pagos.”",
     img: "/Img/Testimonios/fixmasters.png",
   },
   {
     id: 3,
     name: "TechCell",
-    text: "azBee no es una app más. Es para los que toman esto en serio. Desde que la usamos, nuestros procesos son más rápidos y claros.",
+    text: "“zazBee no es una app más. Es para los que toman esto en serio. Desde que la usamos, nuestros procesos son más rápidos y claros.”",
     img: "/Img/Testimonios/Logo-TECHCELL.jpg",
   },
 ];
