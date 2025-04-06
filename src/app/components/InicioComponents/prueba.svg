@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Cuadro negro de fondo -->
+  <rect width="200" height="200" fill="black"/>
+  
+  <!-- Círculo blanco en el centro -->
+  <circle cx="100" cy="100" r="50" fill="white"/>
+</svg>

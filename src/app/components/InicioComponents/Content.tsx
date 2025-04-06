@@ -1,11 +1,35 @@
 "use client";
 import { ButtonPrimary, FadeContent, Title, SubTitle } from "@/app/Elements";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "@/app/Hooks/themeContext";
+import logo from "./react-bits-solid-black-CFfyrfKs.svg";
+import MetallicPaint, {
+  parseLogoImage,
+} from "./../../../../Elements/MetallicPaint/MetallicPaint";
 
 export const Content = () => {
   const { isDarkMode } = useTheme();
+  const [imageData, setImageData] = useState<ImageData | null>(null);
+
+  useEffect(() => {
+    async function loadDefaultImage() {
+      try {
+        const response = await fetch(logo);
+        const blob = await response.blob();
+        const file = new File([blob], "react-bits-solid-black-CFfyrfKs.svg", {
+          type: blob.type,
+        });
+
+        const parsedData = await parseLogoImage(file);
+        setImageData(parsedData?.imageData ?? null);
+      } catch (err) {
+        console.error("Error loading default image:", err);
+      }
+    }
+
+    loadDefaultImage();
+  }, []);
 
   return (
     <FadeContent
@@ -17,7 +41,7 @@ export const Content = () => {
     >
       {/* Imagen Arriba en Mobile, Derecha en Desktop */}
       <div className="w-full h-1/2 lg:h-auto flex justify-center lg:justify-start items-center ">
-        <Image
+        {/* <Image
           src={
             isDarkMode
               ? "/Img/Inicio/ResponsiveDark.png"
@@ -27,7 +51,20 @@ export const Content = () => {
           height={3000}
           alt="QLQ"
           className="w-full object-contain max-w-2xl "
-        />
+        /> */}
+        <div style={{ width: "100%", height: "100vh", zIndex: 9999999 }}>
+          <MetallicPaint
+            imageData={imageData ?? new ImageData(1, 1)}
+            params={{
+              edge: 2,
+              patternBlur: 0.005,
+              patternScale: 2,
+              refraction: 0.015,
+              speed: 0.3,
+              liquid: 0.07,
+            }}
+          />
+        </div>
       </div>
 
       {/* Contenido de Texto */}

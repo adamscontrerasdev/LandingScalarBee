@@ -16,7 +16,7 @@ export default function Home() {
   const [hasScrolledSections, setHasScrolledSections] = useState({
     beneficios: false,
     funciones: false,
-    planes: false,
+    FAQ: false,
     contact: false,
   });
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -42,7 +42,7 @@ export default function Home() {
       setHasScrolledSections((prev) => ({ ...prev, [section]: false }));
     }
   };
-  const sectionIds = ["inicio", "beneficios", "funciones", "planes", "contact"];
+  const sectionIds = ["inicio", "beneficios", "funciones", "FAQ", "contact"];
 
   const bgtodos = "var(--foreground)";
 
@@ -277,9 +277,9 @@ export default function Home() {
         ></div>
       </motion.div>
 
-      {/* planesScreen */}
+      {/* FAQScreen */}
       <motion.div
-        key="planes"
+        key="FAQ"
         initial={{ y: "100%" }}
         animate={{
           y: currentIndex >= 3 ? "112px" : "100%",
@@ -293,11 +293,11 @@ export default function Home() {
         className={`absolute w-full h-full  left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
           currentIndex !== 3 ? "fixed" : ""
         }`}
-        id="planes"
+        id="FAQ"
       >
         <div
           className="scrollable-content  absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
-          onScroll={(e) => handleScroll(e, "planes")}
+          onScroll={(e) => handleScroll(e, "FAQ")}
         >
           <PlanesScreen isFocus={currentIndex === 3} />
         </div>
@@ -306,7 +306,7 @@ export default function Home() {
           style={{
             background:
               "linear-gradient(to bottom, var(--foreground)0%, transparent 10%)",
-            opacity: hasScrolledSections.planes ? 1 : 0,
+            opacity: hasScrolledSections.FAQ ? 1 : 0,
             transition: "opacity 0.2s ease-in-out",
           }}
         ></div>
