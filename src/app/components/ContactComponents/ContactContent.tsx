@@ -82,12 +82,12 @@ export const ContactContent = () => {
         >
           <input
             type="text"
-            placeholder="Nombre"
+            placeholder="tu nombre"
             className="w-full  rounded-xl bg-[var(--background)] p-3  text-[var(--texts)]  capitalize"
           />
           <input
             type="mail"
-            placeholder="Email"
+            placeholder="tu e-mail"
             className="w-full   rounded-xl bg-[var(--background)] p-3  text-[var(--texts)]  capitalize"
           />
           <div className="w-full rounded-xl bg-[var(--background)] p-3  text-[var(--texts)]  capitalize flex gap-2">
@@ -97,9 +97,9 @@ export const ContactContent = () => {
               name="countryCode"
             >
               {CountryCodeOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
               ))}
             </select>
             <input
@@ -107,13 +107,13 @@ export const ContactContent = () => {
               inputMode="numeric"
               pattern="[0-9]{10}"
               maxLength={10}
-              placeholder="Ej: 11 1234 5678"
+              placeholder="numero de negocio"
               className="w-full bg-transparent outline-none"
             />
           </div>
 
           <ButtonPrimary
-            text="Asegurar mi lugar"
+            text="Asegurar mi lugar 🔥"
             className="w-full"
             variant="outline"
             leve
