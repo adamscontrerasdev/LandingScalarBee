@@ -1,8 +1,8 @@
-import { ButtonPrimary, Title } from "@/app/Elements";
+import { Title } from "@/app/Elements";
 import { useTheme } from "@/app/Hooks/themeContext";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { useState } from "react";
-import { PiCheckBold } from "react-icons/pi";
+// import { PiCheckBold } from "react-icons/pi";
 
 // const Planes = [
 //   {

@@ -1,6 +1,7 @@
 import React from "react";
 import { ButtonPrimary, Title } from "@/app/Elements";
 import Image from "next/image";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 interface Beneficios {
   title: string;
@@ -92,10 +93,33 @@ const Card: React.FC<BeneficiosProps> = ({ benefit, order }) => {
   );
 };
 
-export const BeneficiosContent = () => {
+interface BeneficiosContentProps {
+  isFocus?: boolean;
+}
+
+export const BeneficiosContent: React.FC<BeneficiosContentProps> = ({
+  isFocus,
+}) => {
   return (
-    <div className=" flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative">
-      <Title value="Más control, menos esfuerzo"  redirect="#beneficios" />
+    <div className=" flex flex-col justify-center items-center gap-2 rounded-3xl w-full relative">
+      <div
+        className={`w-full  flex justify-center items-center rounded-full h-10 px-5 text-white text-6xl animate-bounce ${
+          isFocus ? "opacity-0" : "opacity-100"
+        }`}
+        style={{
+          transition: "opacity 0.5s ease-in-out",
+        }}
+      >
+        <MdKeyboardArrowDown />
+      </div>
+      <div
+        className={`${isFocus ? "opacity-100" : "opacity-0"} `}
+        style={{
+          transition: "opacity 0.5s ease-in-out",
+        }}
+      >
+        <Title value="Más control, menos esfuerzo" redirect="#beneficios" />
+      </div>
       <div className=" w-full min-h-20  flex flex-col justify-center items-center px-5 md:px-0">
         {benefits.map((benefit, index) => (
           <Card key={index} benefit={benefit} order={index % 2 === 0 ? 1 : 0} />

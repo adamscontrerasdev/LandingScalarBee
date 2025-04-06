@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps /
+/ eslint-disable react-refresh/only-export-components */
 "use client";
 
 import { useEffect, useRef, useState } from "react";
