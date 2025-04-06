@@ -7,7 +7,6 @@ import { Title } from "@/app/Elements";
 import { ButtonPrimary } from "@/app/Elements/ReusableElements/ButtonPrimary";
 import { SubTitle } from "@/app/Elements/ReusableElements/SubTitle";
 import { FooterContent } from "@/app/components/FooterComponents/FooterContent";
-import { strong } from "framer-motion/client";
 
 const CountryCodeOptions = [{ value: "+54", label: "🇦🇷 +54" }];
 
