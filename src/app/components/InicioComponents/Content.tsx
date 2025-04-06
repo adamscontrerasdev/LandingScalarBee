@@ -40,10 +40,13 @@ export const Content = () => {
             borderRadius: "20px 0 0 0",
           }}
         >
-          <Title value="Optimiza tu negocio de reparación con la mejor gestión" left />
-          <SubTitle value="!Organiza!, delega y crece sin perder el control" />
+          <Title value="Tu laboratorio de reparación al siguiente nivel." left />
+          <SubTitle value="Gestiona tu negocio de móviles como lo hacen los mejores:
+organiza, controla y crece sin perder el control." />
+          <SubTitle value="Hecho para técnicos que quieren más que sobrevivir:
+quieren dominar." />
 
-          <ButtonPrimary text="Prueba gratis por 14 días" />
+          <ButtonPrimary text="Demo Exlusiva" />
         </div>
       </div>
     </FadeContent>
