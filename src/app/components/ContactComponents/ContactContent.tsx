@@ -56,11 +56,10 @@ export const ContactContent = () => {
 
   return (
     <div className="flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative px-5 ">
-      <Title value="Bienvenido al lado PRO de las reparaciones." shiny />
+      <Title value="Bienvenido al lado PRO de las reparaciones." />
       <div className="w-full max-w-5xl min-h-[50vh] flex flex-col  justify-center items-center gap-10 px-5">
         <div className="flex flex-col text-center">
           <p className="text-2xl font-bold text-[var(--texts)]">
-            
             <strong>🏅 ZazBee Partner - Nivel Fundador</strong>
           </p>
 
@@ -68,10 +67,10 @@ export const ContactContent = () => {
             Sé de los primeros talleres en usar esta tecnología.🚀 No estará
             abierto para siempre.
           </p>
-            <SubTitle
-              value="ZazBee no es para todos. Pero si es para vos, lo vas a sentir desde el día uno."
-              center
-            />
+          <SubTitle
+            value="ZazBee no es para todos. Pero si es para vos, lo vas a sentir desde el día uno."
+            center
+          />
         </div>
         <form
           className="flex flex-col rounded-2xl bg-[var(--foreground)] w-full max-w-96  justify-center items-center gap-5 p-5 text-base"
@@ -97,9 +96,9 @@ export const ContactContent = () => {
               name="countryCode"
             >
               {CountryCodeOptions.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
               ))}
             </select>
             <input

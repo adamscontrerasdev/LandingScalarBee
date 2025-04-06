@@ -95,7 +95,7 @@ const Card: React.FC<BeneficiosProps> = ({ benefit, order }) => {
 export const BeneficiosContent = () => {
   return (
     <div className=" flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative">
-      <Title value="Más control, menos esfuerzo" shiny redirect="#beneficios" />
+      <Title value="Más control, menos esfuerzo"  redirect="#beneficios" />
       <div className=" w-full min-h-20  flex flex-col justify-center items-center px-5 md:px-0">
         {benefits.map((benefit, index) => (
           <Card key={index} benefit={benefit} order={index % 2 === 0 ? 1 : 0} />

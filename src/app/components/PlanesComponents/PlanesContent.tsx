@@ -133,7 +133,7 @@ export const PlanesContent = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative ">
       <div className="flex flex-col items-center justify-center">
-        <Title value="Planes a Tu Medida" shiny />
+        <Title value="Planes a Tu Medida"  />
         <button
           onClick={() => setIsYearly(!isYearly)}
           className="relative px-4 py-1 rounded-full border border-[var(--primary)] text-[var(--primary)] text-sm font-semibold transition duration-300 hover:bg-[var(--primary)] hover:text-white cursor-pointer  "

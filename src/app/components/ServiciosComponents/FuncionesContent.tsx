@@ -9,7 +9,6 @@ import { GiAutoRepair } from "react-icons/gi";
 import { GiWorld } from "react-icons/gi";
 import { useIsMobile } from "./../../Hooks/useIsMobile";
 import { IoIosArrowDown } from "react-icons/io";
-import { img } from "framer-motion/client";
 
 const Sections = [
   {
@@ -272,7 +271,7 @@ export const FuncionesContent = () => {
 
   return (
     <div className=" flex flex-col justify-center items-center gap-5 lg:gap-10 rounded-3xl w-full relative">
-      <Title value="Una plataforma simple, potente y eficaz" shiny />
+      <Title value="Una plataforma simple, potente y eficaz"  />
       <div className="w-full  md:h-80 flex-col md:flex-row flex justify-center items-center  gap-5 rounded-3xl relative max-w-7xl px-5 ">
         {/* Columna izquierda */}
         <div
