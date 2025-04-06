@@ -7,6 +7,7 @@ import { Title } from "@/app/Elements";
 import { ButtonPrimary } from "@/app/Elements/ReusableElements/ButtonPrimary";
 import { SubTitle } from "@/app/Elements/ReusableElements/SubTitle";
 import { FooterContent } from "@/app/components/FooterComponents/FooterContent";
+import { strong } from "framer-motion/client";
 
 const CountryCodeOptions = [{ value: "+54", label: "🇦🇷 +54" }];
 
@@ -55,8 +56,23 @@ export const ContactContent = () => {
 
   return (
     <div className="flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative px-5 ">
-      <Title value="Contactemos" shiny />
+      <Title value="Bienvenido al lado PRO de las reparaciones." shiny />
       <div className="w-full max-w-5xl min-h-[50vh] flex flex-col  justify-center items-center gap-10 px-5">
+        <div className="flex flex-col text-center">
+          <p className="text-2xl font-bold text-[var(--texts)]">
+            
+            <strong>🏅 ZazBee Partner - Nivel Fundador</strong>
+          </p>
+
+          <p>
+            Sé de los primeros talleres en usar esta tecnología.🚀 No estará
+            abierto para siempre.
+          </p>
+            <SubTitle
+              value="ZazBee no es para todos. Pero si es para vos, lo vas a sentir desde el día uno."
+              center
+            />
+        </div>
         <form
           className="flex flex-col rounded-2xl bg-[var(--foreground)] w-full max-w-96  justify-center items-center gap-5 p-5 text-base"
           style={{
@@ -97,19 +113,12 @@ export const ContactContent = () => {
           </div>
 
           <ButtonPrimary
-            text="Enviar"
+            text="Asegurar mi lugar"
             className="w-full"
             variant="outline"
             leve
           ></ButtonPrimary>
         </form>
-        <div className="w-full h-full  rounded-xl">
-          <Title value="¡Queremos estar en contacto!" />
-          <SubTitle
-            value="Completá tus datos para recibir información importante sobre el acceso exclusivo a nuestra beta y novedades de nuestra empresa. Solo te enviaremos mensajes relevantes y útiles."
-            center
-          />
-        </div>
       </div>
       {/* <div className=" w-full h-auto flex justify-center items-center">
         {redes.map((red) => (

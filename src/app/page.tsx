@@ -62,10 +62,10 @@ export default function Home() {
     if (isScrolling.current) return;
 
     const section = document.querySelector(
-      `#${sectionIds[currentIndex]}`
+      `#${sectionIds[currentIndex]}`,
     ) as HTMLElement;
     const scrollableDiv = section?.querySelector(
-      ".scrollable-content"
+      ".scrollable-content",
     ) as HTMLElement;
 
     if (scrollableDiv) {
@@ -118,10 +118,10 @@ export default function Home() {
     const threshold = 10; // sensibilidad mínima para considerar swipe
 
     const section = document.querySelector(
-      `#${sectionIds[currentIndex]}`
+      `#${sectionIds[currentIndex]}`,
     ) as HTMLElement;
     const scrollableDiv = section?.querySelector(
-      ".scrollable-content"
+      ".scrollable-content",
     ) as HTMLElement;
 
     if (scrollableDiv) {
@@ -376,10 +376,10 @@ export default function Home() {
             currentIndex === 0
               ? "100dvh"
               : currentIndex >= 2
-              ? "3.5rem"
-              : isMobile
-              ? "94dvh"
-              : "96vh",
+                ? "3.5rem"
+                : isMobile
+                  ? "94dvh"
+                  : "96vh",
           background:
             currentIndex !== 0
               ? currentIndex >= 2
@@ -406,10 +406,10 @@ export default function Home() {
             currentIndex === 0
               ? "100vh"
               : currentIndex >= 3
-              ? "4.5rem"
-              : isMobile
-              ? "94dvh"
-              : "96vh",
+                ? "4.5rem"
+                : isMobile
+                  ? "94dvh"
+                  : "96vh",
           background:
             currentIndex !== 0
               ? currentIndex >= 3
@@ -437,10 +437,10 @@ export default function Home() {
             currentIndex === 0
               ? "100vh"
               : currentIndex >= 4
-              ? "5.5rem"
-              : isMobile
-              ? "94dvh"
-              : "96vh",
+                ? "5.5rem"
+                : isMobile
+                  ? "94dvh"
+                  : "96vh",
           background:
             currentIndex !== 0
               ? currentIndex >= 4

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useRef, useEffect, useState, ReactNode } from "react";
 
 interface FadeContentProps {
@@ -38,7 +38,7 @@ export const FadeContent: React.FC<FadeContentProps> = ({
           }, delay);
         }
       },
-      { threshold }
+      { threshold },
     );
 
     observer.observe(element);
@@ -53,11 +53,10 @@ export const FadeContent: React.FC<FadeContentProps> = ({
       style={{
         opacity: inView ? 1 : initialOpacity,
         transition: `opacity ${duration}ms ${easing}, filter ${duration}ms ${easing}`,
-        filter: blur ? (inView ? 'blur(0px)' : 'blur(10px)') : 'none',
+        filter: blur ? (inView ? "blur(0px)" : "blur(10px)") : "none",
       }}
     >
       {children}
     </div>
   );
 };
-

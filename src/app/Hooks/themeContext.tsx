@@ -1,5 +1,11 @@
 "use client";
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 
 // Tipado del contexto
 interface ThemeContextType {
@@ -20,8 +26,8 @@ export const useTheme = () => {
 
 // Provider para envolver la app
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean | null>(null);  // Inicializamos en null para detectar primero
-  const [isMounted, setIsMounted] = useState(false);  // Estado para controlar la carga inicial
+  const [isDarkMode, setIsDarkMode] = useState<boolean | null>(null); // Inicializamos en null para detectar primero
+  const [isMounted, setIsMounted] = useState(false); // Estado para controlar la carga inicial
 
   // Detectar tema del sistema
   useEffect(() => {
@@ -44,7 +50,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (isDarkMode !== null) {
       document.documentElement.classList.toggle("dark", isDarkMode);
-      setIsMounted(true);  // La app puede renderizarse
+      setIsMounted(true); // La app puede renderizarse
     }
   }, [isDarkMode]);
 

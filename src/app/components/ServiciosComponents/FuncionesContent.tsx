@@ -9,6 +9,7 @@ import { GiAutoRepair } from "react-icons/gi";
 import { GiWorld } from "react-icons/gi";
 import { useIsMobile } from "./../../Hooks/useIsMobile";
 import { IoIosArrowDown } from "react-icons/io";
+import { img } from "framer-motion/client";
 
 const Sections = [
   {
@@ -96,19 +97,20 @@ const testimonios = [
   {
     id: 1,
     name: "Team Celular",
-    text: "Desde que usamos ZazBee nuestros ingresos han aumentado un 30%. por el simple plus de la productividad",
+    text: "“Desde que usamos ZazBee, nuestros ingresos subieron un 30%. Es como tener un asistente de lujo que nunca se equivoca.”",
     img: "/Img/Testimonios/TeamCelular.png",
   },
   {
     id: 2,
-    name: "Jane Doe",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.",
+    name: "FixMasters",
+    text: "Pasamos de anotar en papel a tener todo en la palma de la mano. Control total de clientes, reparaciones y pagos.",
+    img: "/Img/Testimonios/fixmasters.png",
   },
   {
     id: 3,
     name: "TechCell",
-    text: "god",
-    img: "/Img/Testimonios/TEchCell.png",
+    text: "azBee no es una app más. Es para los que toman esto en serio. Desde que la usamos, nuestros procesos son más rápidos y claros.",
+    img: "/Img/Testimonios/Logo-TECHCELL.jpg",
   },
 ];
 
@@ -188,11 +190,11 @@ export const FuncionesContent = () => {
       if (carouselRef.current) {
         console.log(
           carouselRef.current.scrollWidth,
-          carouselRef.current.offsetWidth
+          carouselRef.current.offsetWidth,
         );
 
         setWidth(
-          carouselRef.current.scrollWidth - carouselRef.current.offsetWidth
+          carouselRef.current.scrollWidth - carouselRef.current.offsetWidth,
         );
       }
     };

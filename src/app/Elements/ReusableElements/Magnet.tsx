@@ -1,5 +1,11 @@
-"use client"
-import React, { useState, useEffect, useRef, ReactNode, HTMLAttributes } from "react";
+"use client";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  ReactNode,
+  HTMLAttributes,
+} from "react";
 
 interface MagnetProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
@@ -24,7 +30,10 @@ export const Magnet: React.FC<MagnetProps> = ({
   ...props
 }) => {
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [position, setPosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
   const magnetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,7 +45,8 @@ export const Magnet: React.FC<MagnetProps> = ({
     const handleMouseMove = (e: MouseEvent) => {
       if (!magnetRef.current) return;
 
-      const { left, top, width, height } = magnetRef.current.getBoundingClientRect();
+      const { left, top, width, height } =
+        magnetRef.current.getBoundingClientRect();
       const centerX = left + width / 2;
       const centerY = top + height / 2;
 
@@ -82,4 +92,3 @@ export const Magnet: React.FC<MagnetProps> = ({
     </div>
   );
 };
-

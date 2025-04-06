@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useRef, useMemo, ReactNode, RefObject } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -66,7 +66,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
           end: rotationEnd,
           scrub: true,
         },
-      }
+      },
     );
 
     const wordElements = el.querySelectorAll<HTMLElement>(".word");
@@ -85,7 +85,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
           end: wordAnimationEnd,
           scrub: true,
         },
-      }
+      },
     );
 
     if (enableBlur) {
@@ -103,7 +103,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
             end: wordAnimationEnd,
             scrub: true,
           },
-        }
+        },
       );
     }
 
@@ -130,4 +130,3 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
     </h2>
   );
 };
-

@@ -16,7 +16,7 @@ export const SubTitle = ({
       </span>
     ) : (
       part
-    )
+    ),
   );
 
   return (

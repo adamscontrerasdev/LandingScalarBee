@@ -40,11 +40,18 @@ export const Content = () => {
             borderRadius: "20px 0 0 0",
           }}
         >
-          <Title value="Tu laboratorio de reparación al siguiente nivel." left />
-          <SubTitle value="Gestiona tu negocio de móviles como lo hacen los mejores:
-organiza, controla y crece sin perder el control." />
-          <SubTitle value="Hecho para técnicos que quieren más que sobrevivir:
-quieren dominar." />
+          <Title
+            value="Tu laboratorio de reparación al siguiente nivel."
+            left
+          />
+          <SubTitle
+            value="Gestiona tu negocio de móviles como lo hacen los mejores:
+organiza, controla y crece sin perder el control."
+          />
+          <SubTitle
+            value="Hecho para técnicos que quieren más que sobrevivir:
+quieren dominar."
+          />
 
           <ButtonPrimary text="Demo Exlusiva" />
         </div>

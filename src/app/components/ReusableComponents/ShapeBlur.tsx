@@ -1,8 +1,8 @@
 "use client";
-import React, { useRef, useEffect, FC } from 'react';
+import React, { useRef, useEffect, FC } from "react";
 // Three.js has no built-in TypeScript support.
 // Installing @types/three is optional but helps avoid type errors.
-import * as THREE from 'three';
+import * as THREE from "three";
 
 // Vertex Shader
 const vertexShader = /* glsl */ `
@@ -143,7 +143,7 @@ interface ShapeBlurProps {
 }
 
 export const ShapeBlur: FC<ShapeBlurProps> = ({
-  className = '',
+  className = "",
   variation = 0,
   pixelRatioProp = 2,
   shapeSize = 1.2,
@@ -204,8 +204,8 @@ export const ShapeBlur: FC<ShapeBlurProps> = ({
       vMouse.set(e.clientX - rect.left, e.clientY - rect.top);
     };
 
-    document.addEventListener('mousemove', onPointerMove);
-    document.addEventListener('pointermove', onPointerMove);
+    document.addEventListener("mousemove", onPointerMove);
+    document.addEventListener("pointermove", onPointerMove);
 
     const resize = () => {
       if (!mountRef.current) return;
@@ -229,7 +229,7 @@ export const ShapeBlur: FC<ShapeBlurProps> = ({
     };
 
     resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener("resize", resize);
 
     const ro = new ResizeObserver(() => resize());
     ro.observe(mountRef.current as Element);
@@ -249,10 +249,10 @@ export const ShapeBlur: FC<ShapeBlurProps> = ({
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resize);
+      window.removeEventListener("resize", resize);
       ro.disconnect();
-      document.removeEventListener('mousemove', onPointerMove);
-      document.removeEventListener('pointermove', onPointerMove);
+      document.removeEventListener("mousemove", onPointerMove);
+      document.removeEventListener("pointermove", onPointerMove);
       mount.removeChild(renderer.domElement);
       renderer.dispose();
     };
@@ -268,4 +268,3 @@ export const ShapeBlur: FC<ShapeBlurProps> = ({
 
   return <div ref={mountRef} className={`w-full h-full ${className}`} />;
 };
-

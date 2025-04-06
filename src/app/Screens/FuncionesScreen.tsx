@@ -11,7 +11,7 @@ export const FuncionesScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
       id="Servicios"
       isFocus={isFocus}
     >
-      <FuncionesContent/>
+      <FuncionesContent />
     </FolioPageContainer>
   );
 };

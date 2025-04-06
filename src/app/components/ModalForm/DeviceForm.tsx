@@ -101,7 +101,7 @@ const DeviceForm: React.FC = () => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -134,7 +134,7 @@ const DeviceForm: React.FC = () => {
     }));
 
     const selectedType = simulatedData.device_types.find(
-      (type) => type.id === deviceTypeId
+      (type) => type.id === deviceTypeId,
     );
     if (selectedType) {
       setBrands(Object.keys(selectedType.models));
@@ -152,7 +152,7 @@ const DeviceForm: React.FC = () => {
     }));
 
     const selectedType = simulatedData.device_types.find(
-      (type) => type.id === formData.id_device_type
+      (type) => type.id === formData.id_device_type,
     );
     if (selectedType) {
       const availableModels = selectedType.models as unknown as Record<
@@ -385,7 +385,7 @@ const DeviceForm: React.FC = () => {
                     ...formData,
                     list_attributes: [
                       ...formData.list_attributes.filter(
-                        (a) => a.id_attribute !== attribute.id_attribute
+                        (a) => a.id_attribute !== attribute.id_attribute,
                       ),
                       {
                         id_attribute: attribute.id_attribute,

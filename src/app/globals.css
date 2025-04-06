@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 input,
@@ -17,15 +17,12 @@ textarea:focus {
   /* Aplica el borde de color primario en el foco */
 }
 
-
-
-
 p {
   @apply text-sm md:text-base lg:text-lg text-[var(--texts)];
 }
 
 :root {
-  --background: #E5E5E5;
+  --background: #e5e5e5;
   --foreground: #eeeeef;
   --texts: #1a1a1a;
   --bubbleBg: #eeeeef03;
@@ -49,7 +46,6 @@ p {
   --foreground: #171717;
   --texts: #fff;
   --bubbleBg: #fff5;
-
 }
 
 @theme inline {
@@ -66,8 +62,6 @@ p {
     --texts: #fff;
     --bubbleBg: #17171703;
     --shadow: #fff3;
-
-
   }
 }
 
