@@ -53,7 +53,7 @@ const benefits = [
   },
   {
     title: "Compatibilidad con todos tus dispositivos",
-    image: "/Img/inicio/ResponsiveDark.png",
+    image: "/Img/Inicio/ResponsiveDark.png",
     description:
       "Accede a la plataforma desde cualquier dispositivo, ya sea móvil o de escritorio, para mayor comodidad.",
     TextButton: "Ver compatibilidad",
