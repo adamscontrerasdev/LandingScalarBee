@@ -1,57 +1,57 @@
-// import { CircularText } from "@/app/components";
-// import { ImFacebook2 } from "react-icons/im";
-// import { FaInstagram } from "react-icons/fa";
-// import { RiTwitterXFill } from "react-icons/ri";
-// import { IoIosMail } from "react-icons/io";
-import { Title } from "@/app/Elements";
-import { ButtonPrimary } from "@/app/Elements/ReusableElements/ButtonPrimary";
-import { SubTitle } from "@/app/Elements/ReusableElements/SubTitle";
-import { FooterContent } from "@/app/components/FooterComponents/FooterContent";
+import CircularText from "@/components/Elements/ReusableElements/CircularText";
+import { ImFacebook2 } from "react-icons/im";
+import { FaInstagram } from "react-icons/fa";
+import { RiTwitterXFill } from "react-icons/ri";
+import { IoIosMail } from "react-icons/io";
+import { Title } from "@/components/Elements";
+import { ButtonPrimary } from "@/components/Elements/ReusableElements/ButtonPrimary";
+import { SubTitle } from "@/components/Elements/ReusableElements/SubTitle";
+import { FooterContent } from "@/components/FooterComponents/FooterContent";
 
 const CountryCodeOptions = [{ value: "+54", label: "🇦🇷 +54" }];
 
 export const ContactContent = () => {
-  // const redes = [
-  //   {
-  //     id: 1,
-  //     icon: (
-  //       <ImFacebook2 size={40} className="w-full h-full text-[var(--texts)]" />
-  //     ), // Aquí pasamos el componente
-  //     text: "FACEBOOK*FACEBOOK*",
-  //     link: "https://www.facebook.com/prubasdeusuarios/",
-  //     bg: "#f00",
-  //   },
-  //   {
-  //     id: 2,
-  //     icon: (
-  //       <FaInstagram size={40} className="w-full h-full text-[var(--texts)]" />
-  //     ),
-  //     text: "INSTAGRAM*INSTAGRAM*",
-  //     link: "https://www.instagram.com/prubasdeusuarios/",
-  //     bg: "#0f0",
-  //   },
-  //   {
-  //     id: 3,
-  //     icon: (
-  //       <RiTwitterXFill
-  //         size={40}
-  //         className="w-full h-full text-[var(--texts)]"
-  //       />
-  //     ),
-  //     text: "X*X*X*TWITTER*",
-  //     link: "https://www.twitter.com/prubasdeusuarios/",
-  //     bg: "#00f",
-  //   },
-  //   {
-  //     id: 4,
-  //     icon: (
-  //       <IoIosMail size={40} className="w-full h-full text-[var(--texts)]" />
-  //     ),
-  //     text: "MAIL*MAIL*MAIL*",
-  //     link: "mailto:prubasdeusuarios@example.com",
-  //     bg: "#ff0",
-  //   },
-  // ];
+  const redes = [
+    {
+      id: 1,
+      icon: (
+        <ImFacebook2 size={40} className="w-full h-full text-[var(--texts)]" />
+      ), // Aquí pasamos el componente
+      text: "FACEBOOK*FACEBOOK*",
+      link: "https://www.facebook.com/prubasdeusuarios/",
+      bg: "#f00",
+    },
+    {
+      id: 2,
+      icon: (
+        <FaInstagram size={40} className="w-full h-full text-[var(--texts)]" />
+      ),
+      text: "INSTAGRAM*INSTAGRAM*",
+      link: "https://www.instagram.com/prubasdeusuarios/",
+      bg: "#0f0",
+    },
+    {
+      id: 3,
+      icon: (
+        <RiTwitterXFill
+          size={40}
+          className="w-full h-full text-[var(--texts)]"
+        />
+      ),
+      text: "X*X*X*TWITTER*",
+      link: "https://www.twitter.com/prubasdeusuarios/",
+      bg: "#00f",
+    },
+    {
+      id: 4,
+      icon: (
+        <IoIosMail size={40} className="w-full h-full text-[var(--texts)]" />
+      ),
+      text: "MAIL*MAIL*MAIL*",
+      link: "mailto:prubasdeusuarios@example.com",
+      bg: "#ff0",
+    },
+  ];
 
   return (
     <div className="flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative px-5 ">
@@ -118,7 +118,7 @@ export const ContactContent = () => {
           ></ButtonPrimary>
         </form>
       </div>
-      {/* <div className=" w-full h-auto flex justify-center items-center">
+      <div className=" w-full h-auto flex justify-center items-center">
         {redes.map((red) => (
           <a
             key={red.id} // Es importante incluir una `key` única aquí
@@ -141,7 +141,7 @@ export const ContactContent = () => {
             </div>
           </a>
         ))}
-      </div> */}
+      </div>
       <FooterContent />
     </div>
   );

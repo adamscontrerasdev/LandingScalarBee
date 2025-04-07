@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import Image from "next/image";
-import { ScrollReveal } from "@/app/components";
+import { ScrollReveal } from "@/components";
 
 interface ContentNosotrosProps {
   verImage: boolean;

@@ -204,7 +204,7 @@ export default function Home() {
         id="beneficios"
       >
         <div
-          className="scrollable-content  absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
+          className="scrollable-content  absolute md:top-[45%] top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
           onScroll={(e) => handleScroll(e, "beneficios")}
           ref={scrollRef}
         >

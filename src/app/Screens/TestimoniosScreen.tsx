@@ -1,4 +1,4 @@
-import { TestimoniosContent } from "../components";
+import { TestimoniosContent } from "../../components";
 
 export const TestimoniosScreen = () => {
   return (

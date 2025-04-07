@@ -1,6 +1,6 @@
 import React from "react";
-import { BeneficiosContent } from "../components";
-import { FolioPageContainer } from "../Elements/ReusableElements/FolioPageContainer";
+import { BeneficiosContent } from "../../components";
+import { FolioPageContainer } from "@/components/Elements/ReusableElements/FolioPageContainer";
 import { PropsForScreens } from "../Types";
 
 export const BeneficiosScreen: React.FC<PropsForScreens> = ({ isFocus }) => {

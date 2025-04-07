@@ -1,4 +1,4 @@
-import { Title } from "@/app/Elements";
+import { Title } from "@/components/Elements";
 import { useTheme } from "@/app/Hooks/themeContext";
 // import { motion } from "framer-motion";
 import { useState } from "react";

@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./Hooks/themeContext";
 import { ModalProvider } from "./Hooks/modalContext";
 import { ActiveItemProvider } from "./Hooks/ActiveItemToTheServiceComponentContext";
+import { Navbar } from "@/components/NavbarComponent/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,8 +34,7 @@ export default function RootLayout({
         <ActiveItemProvider>
           <ModalProvider>
             <ThemeProvider>
-              {/* <Navbar /> */}
-              {/* <ParticlesBg /> */}
+              <Navbar />
               {children}
             </ThemeProvider>
           </ModalProvider>

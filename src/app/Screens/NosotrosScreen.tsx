@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { ContentNosotros } from "../components";
+import { ContentNosotros } from "../../components";
 
 export const NosotrosScreen = () => {
   const contenToNosotrosRef = useRef<HTMLDivElement>(null);

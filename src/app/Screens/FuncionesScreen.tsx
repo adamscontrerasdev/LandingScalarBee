@@ -1,6 +1,6 @@
 import React from "react";
-import { FuncionesContent } from "../components";
-import { FolioPageContainer } from "../Elements/ReusableElements/FolioPageContainer";
+import { FuncionesContent } from "../../components";
+import { FolioPageContainer } from "@/components/Elements/ReusableElements/FolioPageContainer";
 import { PropsForScreens } from "../Types";
 
 export const FuncionesScreen: React.FC<PropsForScreens> = ({ isFocus }) => {

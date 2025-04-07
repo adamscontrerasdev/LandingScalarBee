@@ -1,4 +1,4 @@
-import { Title } from "@/app/Elements";
+import { Title } from "@/components/Elements";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { FaUser } from "react-icons/fa";
@@ -7,7 +7,7 @@ import { FaUserTag } from "react-icons/fa6";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { GiAutoRepair } from "react-icons/gi";
 import { GiWorld } from "react-icons/gi";
-import { useIsMobile } from "./../../Hooks/useIsMobile";
+import { useIsMobile } from "../../app/Hooks/useIsMobile";
 import { IoIosArrowDown } from "react-icons/io";
 
 const Sections = [

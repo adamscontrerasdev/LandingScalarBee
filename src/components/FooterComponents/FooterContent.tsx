@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { SubTitle } from "@/app/Elements/ReusableElements/SubTitle";
+import { SubTitle } from "@/components/Elements/ReusableElements/SubTitle";
 import Link from "next/link";
 import { useTheme } from "@/app/Hooks/themeContext";
 
@@ -14,7 +14,7 @@ export const FooterContent = ({}) => {
           "linear-gradient(to bottom, var(--background) 0%, transparent 50%)",
       }}
     >
-      <img
+      {/* <img
         src={
           isDarkMode
             ? "/Img/Logo scalarbee/bee-logo-white.png"
@@ -24,15 +24,15 @@ export const FooterContent = ({}) => {
         height={50}
         alt="logo"
         className="w-10 h-10 object-contain absolute top-5  left-5 bg-[var(--foreground)] rounded-xl"
-      />
+      /> */}
 
       <div className="w-full min-h-20 py-10   relative flex-col justify-center items-center gap-2 px-5">
-        <SubTitle value="©2025 all rights reserved by ZazBee." center />
-        <div className=" flex gap-1 text-xs md:text-base text-[var(--texts)] justify-center items-center">
+       <SubTitle value="©2025 all rights reserved by ZazBee." center />
+         {/* <div className=" flex gap-1 text-xs md:text-base text-[var(--texts)] justify-center items-center">
           <Link href={""}> Política de privacidad</Link>|
           <Link href={""}> Condiciones de uso</Link>|
           <Link href={""}> Aviso legal</Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );
