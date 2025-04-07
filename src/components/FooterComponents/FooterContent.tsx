@@ -1,11 +1,8 @@
 "use client";
 import React from "react";
 import { SubTitle } from "@/components/Elements/ReusableElements/SubTitle";
-import Link from "next/link";
-import { useTheme } from "@/app/Hooks/themeContext";
 
 export const FooterContent = ({}) => {
-  const { isDarkMode } = useTheme();
   return (
     <div
       className=" w-full h-50 max-w-2xl  bottom-0 left-0 flex justify-center items-center gap-10  py-5 relative rounded-xl shadow-md bg-[var(--background)]"

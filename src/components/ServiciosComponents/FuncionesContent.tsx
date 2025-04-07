@@ -156,7 +156,7 @@ export const FuncionesContent = () => {
   const SectionMenuItem: React.FC<sectionPathProps> = ({ section }) => {
     return (
       <div
-        className="w-full flex gap-2 rounded-2xl md:p-3 p-1 px-4 bg-[var(--foreground)]  justify-start items-center cursor-pointer hover:scale-105 transition-all duration-200 ease-in-out"
+        className="w-full flex gap-2 rounded-2xl md:p-3 p-1 bg-[var(--foreground)]  justify-start items-center cursor-pointer hover:scale-105 transition-all duration-200 ease-in-out bg-"
         onClick={() => setSelectedSection(section)}
       >
         <section.icon
@@ -189,11 +189,11 @@ export const FuncionesContent = () => {
       if (carouselRef.current) {
         console.log(
           carouselRef.current.scrollWidth,
-          carouselRef.current.offsetWidth,
+          carouselRef.current.offsetWidth
         );
 
         setWidth(
-          carouselRef.current.scrollWidth - carouselRef.current.offsetWidth,
+          carouselRef.current.scrollWidth - carouselRef.current.offsetWidth
         );
       }
     };
@@ -271,8 +271,8 @@ export const FuncionesContent = () => {
 
   return (
     <div className=" flex flex-col justify-center items-center gap-5 lg:gap-10 rounded-3xl w-full relative">
-      <Title value="Una plataforma simple, potente y eficaz"  />
-      <div className="w-full  md:h-80 flex-col md:flex-row flex justify-center items-center  gap-5 rounded-3xl relative max-w-7xl px-5 ">
+      <Title value="Una plataforma simple, potente y eficaz" left={useIsMobile()}/>
+      <div className="w-full  md:h-80 flex-col md:flex-row flex justify-center items-center  gap-5 rounded-3xl relative max-w-7xl  ">
         {/* Columna izquierda */}
         <div
           className="w-full md:w-80 max-w-96 bg-[var(--background)]  relative rounded-2xl md:flex md:flex-col justify-start items-center md:justify-center gap-2 h-10 md:h-80 overflow-hidden "
@@ -311,7 +311,7 @@ export const FuncionesContent = () => {
         {/* Columna derecha */}
         <div
           role="button"
-          className={`w-full max-w-xl md:w-80 bg-[var(--background)] rounded-2xl flex justify-center py-2 px-4 sm:cursor-pointer md:cursor-auto ${
+          className={`w-full max-w-xl md:w-80 bg-[var(--background)] rounded-2xl flex justify-center py-2  sm:cursor-pointer md:cursor-auto px-5 ${
             isOpen
               ? "h-80 overflow-auto md:h-80 md:overflow-auto"
               : "h-10 overflow-hidden md:h-80 md:overflow-auto active:scale-95 transition-all md:active:scale-100"
@@ -366,7 +366,7 @@ export const FuncionesContent = () => {
           )}
         </div>
       </div>
-      <div className="w-full max-w-7xl px-5 flex flex-col gap-5">
+      <div className="w-full max-w-7xl  flex flex-col gap-5">
         <div className="w-full ">
           <Title value="Nuestros clientes dicen:" left variant="small"></Title>
         </div>

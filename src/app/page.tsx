@@ -62,10 +62,10 @@ export default function Home() {
     if (isScrolling.current) return;
 
     const section = document.querySelector(
-      `#${sectionIds[currentIndex]}`,
+      `#${sectionIds[currentIndex]}`
     ) as HTMLElement;
     const scrollableDiv = section?.querySelector(
-      ".scrollable-content",
+      ".scrollable-content"
     ) as HTMLElement;
 
     if (scrollableDiv) {
@@ -118,10 +118,10 @@ export default function Home() {
     const threshold = 10; // sensibilidad mínima para considerar swipe
 
     const section = document.querySelector(
-      `#${sectionIds[currentIndex]}`,
+      `#${sectionIds[currentIndex]}`
     ) as HTMLElement;
     const scrollableDiv = section?.querySelector(
-      ".scrollable-content",
+      ".scrollable-content"
     ) as HTMLElement;
 
     if (scrollableDiv) {
@@ -169,294 +169,308 @@ export default function Home() {
   const durationTime = 0.3;
 
   return (
-    <div className="relative h-[100dvh] overflow-hidden" aria-live="polite">
-      {/* InicioScreen - Siempre visible en el fondo */}
-      <div
-        className="fixed top-0 left-0 w-full h-full z-0"
-        onClick={() => handleClickHome()}
-      >
-        <InicioScreen isFocus={currentIndex === 0} />
-      </div>
-
-      {/* BeneficiosScreen */}
-      <motion.div
-        key="beneficios"
-        initial={{
-          y: "100%",
-          width: "100%",
-          borderRadius: isMobile ? "20px 20px 0 0" : "0 20px 20px 0",
-        }}
-        animate={{
-          y: currentIndex >= 1 ? "80px" : "80%",
-
-          background: currentIndex >= 1 ? bgtodos : "var(--background)",
-          boxShadow:
-            currentIndex >= 1 ? "0px 0px 50px var(--background)" : "none",
-        }}
-        transition={
-          isMobile
-            ? { duration: durationTime }
-            : { type: "spring", stiffness: 120, damping: 15 }
-        }
-        className={`absolute w-full h-full left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
-          currentIndex !== 1 ? "fixed" : ""
-        }`}
-        id="beneficios"
-      >
-        <div
-          className="scrollable-content  absolute md:top-[45%] top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
-          onScroll={(e) => handleScroll(e, "beneficios")}
-          ref={scrollRef}
-        >
-          <BeneficiosScreen isFocus={currentIndex === 1} />
+    <div className="">
+      {isMobile ? (
+        <div className="px-5 overflow-x-hidden ">
+          <InicioScreen></InicioScreen>
+          <BeneficiosScreen></BeneficiosScreen>
+          <FuncionesScreen></FuncionesScreen>
+          <PlanesScreen></PlanesScreen>
+          <ContactScreen></ContactScreen>
         </div>
+      ) : (
+        <div className="relative h-[100dvh] overflow-hidden" aria-live="polite">
+          {/* InicioScreen - Siempre visible en el fondo */}
+          <div
+            className="fixed top-0 left-0 w-full h-full z-0"
+            onClick={() => handleClickHome()}
+          >
+            <InicioScreen isFocus={currentIndex === 0} />
+          </div>
 
-        <motion.div
-          className="absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: hasScrolledSections.beneficios ? 1 : 0 }}
-          transition={
-            isMobile ? {} : { type: "spring", stiffness: 120, damping: 15 }
-          }
-        >
+          {/* BeneficiosScreen */}
           <motion.div
-            className="absolute inset-0 rounded-t-2xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: hasScrolledSections.beneficios ? 1 : 0.2 }}
-            transition={
-              isMobile ? {} : { type: "spring", stiffness: 120, damping: 15 }
-            }
-            style={{
-              background:
-                "linear-gradient(to bottom, var(--foreground) 2%, transparent 20%)",
+            key="beneficios"
+            initial={{
+              y: "100%",
+              width: "100%",
+              borderRadius: isMobile ? "20px 20px 0 0" : "0 20px 20px 0",
             }}
-          />
-        </motion.div>
+            animate={{
+              y: currentIndex >= 1 ? "80px" : "80%",
 
-        <div
-          className=" to-transparent absolute top-[46%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to top, var(--foreground)2%, transparent 10%)",
-          }}
-        ></div>
-      </motion.div>
+              background: currentIndex >= 1 ? bgtodos : "var(--background)",
+              boxShadow:
+                currentIndex >= 1 ? "0px 0px 50px var(--background)" : "none",
+            }}
+            transition={
+              isMobile
+                ? { duration: durationTime }
+                : { type: "spring", stiffness: 120, damping: 15 }
+            }
+            className={`absolute w-full h-full left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
+              currentIndex !== 1 ? "fixed" : ""
+            }`}
+            id="beneficios"
+          >
+            <div
+              className="scrollable-content  absolute md:top-[45%] top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
+              onScroll={(e) => handleScroll(e, "beneficios")}
+              ref={scrollRef}
+            >
+              <BeneficiosScreen isFocus={currentIndex === 1} />
+            </div>
 
-      {/* FuncionesScreen */}
-      <motion.div
-        key="funciones"
-        initial={{ y: "100%" }}
-        animate={{
-          y: currentIndex >= 2 ? "96px" : "100%",
-          background: currentIndex >= 2 ? bgtodos : "var(--background)",
-        }}
-        transition={
-          isMobile
-            ? { duration: durationTime }
-            : { type: "spring", stiffness: 120, damping: 15 }
-        }
-        className={`absolute w-full h-full left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
-          currentIndex !== 2 ? "fixed" : ""
-        }`}
-        id="funciones"
-      >
-        <div
-          className="scrollable-content  absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
-          onScroll={(e) => handleScroll(e, "funciones")}
-        >
-          <FuncionesScreen isFocus={currentIndex === 2} />
-        </div>
-        <div
-          className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to bottom, var(--foreground) 0%, transparent 10%) ",
-            opacity: hasScrolledSections.funciones ? 1 : 0,
-            transition: "opacity 0.2s ease-in-out",
-          }}
-        ></div>
-      </motion.div>
+            <motion.div
+              className="absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: hasScrolledSections.beneficios ? 1 : 0 }}
+              transition={
+                isMobile ? {} : { type: "spring", stiffness: 120, damping: 15 }
+              }
+            >
+              <motion.div
+                className="absolute inset-0 rounded-t-2xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: hasScrolledSections.beneficios ? 1 : 0.2 }}
+                transition={
+                  isMobile
+                    ? {}
+                    : { type: "spring", stiffness: 120, damping: 15 }
+                }
+                style={{
+                  background:
+                    "linear-gradient(to bottom, var(--foreground) 2%, transparent 20%)",
+                }}
+              />
+            </motion.div>
 
-      {/* FAQScreen */}
-      <motion.div
-        key="FAQ"
-        initial={{ y: "100%" }}
-        animate={{
-          y: currentIndex >= 3 ? "112px" : "100%",
-          background: currentIndex >= 3 ? bgtodos : "var(--background)",
-        }}
-        transition={
-          isMobile
-            ? { duration: durationTime }
-            : { type: "spring", stiffness: 120, damping: 15 }
-        }
-        className={`absolute w-full h-full  left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
-          currentIndex !== 3 ? "fixed" : ""
-        }`}
-        id="FAQ"
-      >
-        <div
-          className="scrollable-content  absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
-          onScroll={(e) => handleScroll(e, "FAQ")}
-        >
-          <PlanesScreen isFocus={currentIndex === 3} />
-        </div>
-        <div
-          className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to bottom, var(--foreground)0%, transparent 10%)",
-            opacity: hasScrolledSections.FAQ ? 1 : 0,
-            transition: "opacity 0.2s ease-in-out",
-          }}
-        ></div>
-      </motion.div>
+            <div
+              className=" to-transparent absolute top-[46%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(to top, var(--foreground)2%, transparent 10%)",
+              }}
+            ></div>
+          </motion.div>
 
-      {/* ContactScreen */}
-      <motion.div
-        key="contact"
-        initial={{ y: "100%" }}
-        animate={{
-          y: currentIndex >= 4 ? "128px" : "100%",
-          background: currentIndex >= 4 ? bgtodos : "var(--background)",
-        }}
-        transition={
-          isMobile
-            ? { duration: durationTime }
-            : { type: "spring", stiffness: 120, damping: 15 }
-        }
-        className={`absolute w-full h-full overflow-y-visible overflow-x-hidden left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
-          currentIndex !== 4 ? "fixed" : ""
-        }`}
-        id="contact"
-      >
-        <div
-          className="scrollable-content  absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
-          onScroll={(e) => handleScroll(e, "contact")}
-        >
-          <ContactScreen isFocus={currentIndex === 4} />
-        </div>
-        <div
-          className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to bottom, var(--foreground) 0%, transparent 10%)",
-            opacity: hasScrolledSections.contact ? 1 : 0,
-            transition: "opacity 0.2s ease-in-out",
-          }}
-        ></div>
-      </motion.div>
+          {/* FuncionesScreen */}
+          <motion.div
+            key="funciones"
+            initial={{ y: "100%" }}
+            animate={{
+              y: currentIndex >= 2 ? "96px" : "100%",
+              background: currentIndex >= 2 ? bgtodos : "var(--background)",
+            }}
+            transition={
+              isMobile
+                ? { duration: durationTime }
+                : { type: "spring", stiffness: 120, damping: 15 }
+            }
+            className={`absolute w-full h-full left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
+              currentIndex !== 2 ? "fixed" : ""
+            }`}
+            id="funciones"
+          >
+            <div
+              className="scrollable-content  absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
+              onScroll={(e) => handleScroll(e, "funciones")}
+            >
+              <FuncionesScreen isFocus={currentIndex === 2} />
+            </div>
+            <div
+              className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(to bottom, var(--foreground) 0%, transparent 10%) ",
+                opacity: hasScrolledSections.funciones ? 1 : 0,
+                transition: "opacity 0.2s ease-in-out",
+              }}
+            ></div>
+          </motion.div>
 
-      <motion.div
-        className={`w-28 h-10 absolute left-0  md:left-10 z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
-        onClick={() => scrollToSection(1)}
-        initial={{ top: "calc(80% - 2.5rem)", opacity: 0 }}
-        animate={{
-          top: currentIndex === 0 ? "80vh" : "2.5rem",
-          opacity: currentIndex === 0 ? 0 : 1,
-          background:
-            currentIndex === 0 ? "var(--background)" : "var(--foreground)",
-        }}
-        transition={
-          isMobile
-            ? { duration: durationTime }
-            : { type: "spring", stiffness: 120, damping: 15 }
-        }
-        id={sectionIds[1]}
-      >
-        <h2>{sectionIds[1]}</h2>
-      </motion.div>
+          {/* FAQScreen */}
+          <motion.div
+            key="FAQ"
+            initial={{ y: "100%" }}
+            animate={{
+              y: currentIndex >= 3 ? "112px" : "100%",
+              background: currentIndex >= 3 ? bgtodos : "var(--background)",
+            }}
+            transition={
+              isMobile
+                ? { duration: durationTime }
+                : { type: "spring", stiffness: 120, damping: 15 }
+            }
+            className={`absolute w-full h-full  left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
+              currentIndex !== 3 ? "fixed" : ""
+            }`}
+            id="FAQ"
+          >
+            <div
+              className="scrollable-content  absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
+              onScroll={(e) => handleScroll(e, "FAQ")}
+            >
+              <PlanesScreen isFocus={currentIndex === 3} />
+            </div>
+            <div
+              className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(to bottom, var(--foreground)0%, transparent 10%)",
+                opacity: hasScrolledSections.FAQ ? 1 : 0,
+                transition: "opacity 0.2s ease-in-out",
+              }}
+            ></div>
+          </motion.div>
 
-      <motion.div
-        className={`w-28 h-10  absolute left-30 md:left-40 z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
-        onClick={() => scrollToSection(2)}
-        initial={{ top: "100dvh" }}
-        animate={{
-          top:
-            currentIndex === 0
-              ? "100dvh"
-              : currentIndex >= 2
-                ? "3.5rem"
-                : isMobile
+          {/* ContactScreen */}
+          <motion.div
+            key="contact"
+            initial={{ y: "100%" }}
+            animate={{
+              y: currentIndex >= 4 ? "128px" : "100%",
+              background: currentIndex >= 4 ? bgtodos : "var(--background)",
+            }}
+            transition={
+              isMobile
+                ? { duration: durationTime }
+                : { type: "spring", stiffness: 120, damping: 15 }
+            }
+            className={`absolute w-full h-full overflow-y-visible overflow-x-hidden left-1/2 -translate-x-1/2 flex justify-center items-start p-20 ${
+              currentIndex !== 4 ? "fixed" : ""
+            }`}
+            id="contact"
+          >
+            <div
+              className="scrollable-content  absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-0 overflow-y-auto"
+              onScroll={(e) => handleScroll(e, "contact")}
+            >
+              <ContactScreen isFocus={currentIndex === 4} />
+            </div>
+            <div
+              className=" to-transparent absolute top-[44%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-3/4 z-10 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(to bottom, var(--foreground) 0%, transparent 10%)",
+                opacity: hasScrolledSections.contact ? 1 : 0,
+                transition: "opacity 0.2s ease-in-out",
+              }}
+            ></div>
+          </motion.div>
+
+          <motion.div
+            className={`w-28 h-10 absolute left-0  md:left-10 z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
+            onClick={() => scrollToSection(1)}
+            initial={{ top: "calc(80% - 2.5rem)", opacity: 0 }}
+            animate={{
+              top: currentIndex === 0 ? "80vh" : "2.5rem",
+              opacity: currentIndex === 0 ? 0 : 1,
+              background:
+                currentIndex === 0 ? "var(--background)" : "var(--foreground)",
+            }}
+            transition={
+              isMobile
+                ? { duration: durationTime }
+                : { type: "spring", stiffness: 120, damping: 15 }
+            }
+            id={sectionIds[1]}
+          >
+            <h2>{sectionIds[1]}</h2>
+          </motion.div>
+
+          <motion.div
+            className={`w-28 h-10  absolute left-30 md:left-40 z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
+            onClick={() => scrollToSection(2)}
+            initial={{ top: "100dvh" }}
+            animate={{
+              top:
+                currentIndex === 0
+                  ? "100dvh"
+                  : currentIndex >= 2
+                  ? "3.5rem"
+                  : isMobile
                   ? "94dvh"
                   : "96vh",
-          background:
-            currentIndex !== 0
-              ? currentIndex >= 2
-                ? "var(--foreground)"
-                : "var(--background)"
-              : "var(--background)",
-        }}
-        transition={
-          isMobile
-            ? { duration: durationTime }
-            : { type: "spring", stiffness: 120, damping: 15 }
-        }
-        id={sectionIds[2]}
-      >
-        <h2>{sectionIds[2]}</h2>
-      </motion.div>
+              background:
+                currentIndex !== 0
+                  ? currentIndex >= 2
+                    ? "var(--foreground)"
+                    : "var(--background)"
+                  : "var(--background)",
+            }}
+            transition={
+              isMobile
+                ? { duration: durationTime }
+                : { type: "spring", stiffness: 120, damping: 15 }
+            }
+            id={sectionIds[2]}
+          >
+            <h2>{sectionIds[2]}</h2>
+          </motion.div>
 
-      <motion.div
-        className={`w-28 h-10  absolute left-60 md:left-[17.5rem] z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
-        onClick={() => scrollToSection(3)}
-        initial={{ top: "100vh" }}
-        animate={{
-          top:
-            currentIndex === 0
-              ? "100vh"
-              : currentIndex >= 3
-                ? "4.5rem"
-                : isMobile
+          <motion.div
+            className={`w-28 h-10  absolute left-60 md:left-[17.5rem] z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
+            onClick={() => scrollToSection(3)}
+            initial={{ top: "100vh" }}
+            animate={{
+              top:
+                currentIndex === 0
+                  ? "100vh"
+                  : currentIndex >= 3
+                  ? "4.5rem"
+                  : isMobile
                   ? "94dvh"
                   : "96vh",
-          background:
-            currentIndex !== 0
-              ? currentIndex >= 3
-                ? "var(--foreground)"
-                : "var(--background)"
-              : "var(--background)",
-        }}
-        transition={
-          isMobile
-            ? { duration: durationTime }
-            : { type: "spring", stiffness: 120, damping: 15 }
-        }
-        id={sectionIds[3]}
-      >
-        <h2>{sectionIds[3]}</h2>
-      </motion.div>
+              background:
+                currentIndex !== 0
+                  ? currentIndex >= 3
+                    ? "var(--foreground)"
+                    : "var(--background)"
+                  : "var(--background)",
+            }}
+            transition={
+              isMobile
+                ? { duration: durationTime }
+                : { type: "spring", stiffness: 120, damping: 15 }
+            }
+            id={sectionIds[3]}
+          >
+            <h2>{sectionIds[3]}</h2>
+          </motion.div>
 
-      <motion.div
-        className={`w-28 h-10 absolute left-0 md:left-[25rem] 
+          <motion.div
+            className={`w-28 h-10 absolute left-0 md:left-[25rem] 
           z-[9999999999999999] cursor-pointer rounded-t-xl flex justify-center items-center text-[var(--texts)] capitalize`}
-        onClick={() => scrollToSection(4)}
-        initial={{ top: "100vh" }}
-        animate={{
-          top:
-            currentIndex === 0
-              ? "100vh"
-              : currentIndex >= 4
-                ? "5.5rem"
-                : isMobile
+            onClick={() => scrollToSection(4)}
+            initial={{ top: "100vh" }}
+            animate={{
+              top:
+                currentIndex === 0
+                  ? "100vh"
+                  : currentIndex >= 4
+                  ? "5.5rem"
+                  : isMobile
                   ? "94dvh"
                   : "96vh",
-          background:
-            currentIndex !== 0
-              ? currentIndex >= 4
-                ? "var(--foreground)"
-                : "var(--background)"
-              : "var(--background)",
-        }}
-        transition={
-          isMobile
-            ? { duration: durationTime }
-            : { type: "spring", stiffness: 120, damping: 15 }
-        }
-        id={sectionIds[4]}
-      >
-        <h2>{sectionIds[4]}</h2>
-      </motion.div>
+              background:
+                currentIndex !== 0
+                  ? currentIndex >= 4
+                    ? "var(--foreground)"
+                    : "var(--background)"
+                  : "var(--background)",
+            }}
+            transition={
+              isMobile
+                ? { duration: durationTime }
+                : { type: "spring", stiffness: 120, damping: 15 }
+            }
+            id={sectionIds[4]}
+          >
+            <h2>{sectionIds[4]}</h2>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }

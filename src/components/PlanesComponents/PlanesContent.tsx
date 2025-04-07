@@ -2,6 +2,7 @@ import { Title } from "@/components/Elements";
 import { useTheme } from "@/app/Hooks/themeContext";
 // import { motion } from "framer-motion";
 import { useState } from "react";
+import { useIsMobile } from "@/app/Hooks/useIsMobile";
 // import { PiCheckBold } from "react-icons/pi";
 
 // const Planes = [
@@ -222,9 +223,9 @@ export const PlanesContent = () => {
     //     ))}
     //   </div>
     // </div>
-    <div className="flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative  min-h-20">
-      <Title value="Preguntas Frecuentes" />
-      <div className="w-full max-w-5xl  grid grid-cols-2 md:grid-cols-4 gap-2 grid-rows-2 p-5">
+    <div className="flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative  min-h-20 md:px-5">
+      <Title value="Preguntas Frecuentes" left={useIsMobile()} />
+      <div className="w-full max-w-5xl  grid grid-cols-2 md:grid-cols-4 gap-2 grid-rows-2 ">
         {FAQs.map((faq, index) => (
           <FAQCard key={index} question={faq.question} answer={faq.answer} />
         ))}

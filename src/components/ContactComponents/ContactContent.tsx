@@ -7,6 +7,7 @@ import { Title } from "@/components/Elements";
 import { ButtonPrimary } from "@/components/Elements/ReusableElements/ButtonPrimary";
 import { SubTitle } from "@/components/Elements/ReusableElements/SubTitle";
 import { FooterContent } from "@/components/FooterComponents/FooterContent";
+import { useIsMobile } from "@/app/Hooks/useIsMobile";
 
 const CountryCodeOptions = [{ value: "+54", label: "🇦🇷 +54" }];
 
@@ -54,9 +55,9 @@ export const ContactContent = () => {
   ];
 
   return (
-    <div className="flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative px-5 ">
-      <Title value="Bienvenido al lado PRO de las reparaciones." />
-      <div className="w-full max-w-5xl min-h-[50vh] flex flex-col  justify-center items-center gap-10 px-5">
+    <div className="flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative  ">
+      <Title value="Bienvenido al lado PRO de las reparaciones." left={useIsMobile()}/>
+      <div className="w-full max-w-5xl min-h-[50vh] flex flex-col  justify-center items-center gap-10 ">
         <div className="flex flex-col text-center">
           <p className="text-2xl font-bold text-[var(--texts)]">
             <strong>🏅 ZazBee Partner - Nivel Fundador</strong>
