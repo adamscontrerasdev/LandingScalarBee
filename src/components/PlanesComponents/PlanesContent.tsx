@@ -195,8 +195,10 @@ const FAQCard: React.FC<FAQ> = ({ question, answer }) => {
       onMouseEnter={() => setShadow(shadow + 30)}
       onMouseLeave={() => setShadow(shadow - 30)}
     >
-      <h2 className="text-lg font-bold text-[var(--texts)]">{question}</h2>
-      <h2 className="text-sm text-[var(--texts)]">{answer}</h2>
+      <h2 className="text-sm md:text-lg font-bold text-[var(--texts)]">
+        {question}
+      </h2>
+      <h2 className="text-xs md:text-sm text-[var(--texts)]">{answer}</h2>
     </div>
   );
 };
