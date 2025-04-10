@@ -5,7 +5,6 @@ import { ThemeProvider } from "./Hooks/themeContext";
 import { ModalProvider } from "./Hooks/modalContext";
 import { ActiveItemProvider } from "./Hooks/ActiveItemToTheServiceComponentContext";
 import { Navbar } from "@/components/NavbarComponent/Navbar";
-import { useEffect } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
