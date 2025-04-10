@@ -8,6 +8,9 @@ interface ButtonPrimaryProps {
   notify?: boolean;
   variant?: "fill" | "outline";
   leve?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset"; // Agregamos el atributo type
 }
 
 export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
@@ -17,6 +20,9 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
   notify = false,
   variant,
   leve = false,
+  onClick,
+  disabled = false,
+  type = "button", // Valor predeterminado para type
 }) => {
   return (
     <Magnet
@@ -26,6 +32,7 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
       className="relative overflow-visible w-full"
     >
       <button
+        type={type} // Pasamos el atributo type al botón
         className={`text-base font-bold rounded-xl cursor-pointer hover:scale-105 transition-all duration-500 relative z-[99999] text-[var(--texts)] ${className} p-3 text-base md:text-xl ${
           variant
             ? variant === "fill"
@@ -34,6 +41,8 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
             : "bg-[var(--foreground)]"
         }`}
         style={style}
+        onClick={onClick}
+        disabled={disabled}
       >
         {text}
         {notify && (
