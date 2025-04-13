@@ -10,8 +10,35 @@ import { SubTitle } from "@/components/Elements/ReusableElements/SubTitle";
 import { FooterContent } from "@/components/FooterComponents/FooterContent";
 import { useIsMobile } from "@/app/Hooks/useIsMobile";
 import { createLead } from "@/actions/leadsApi";
+import {Bai_Jamjuree } from "next/font/google"
 
-const CountryCodeOptions = [{ value: "+54", label: "🇦🇷 +54" }];
+const baiJamjuree = Bai_Jamjuree({
+  subsets: ["latin"],
+  weight: ["300","400","500", "600", "700"], 
+});
+
+const CountryCodeOptions = [
+  { value: "+54", label: "🇦🇷 +54" },
+  { value: "+55", label: "🇧🇷 +55" },
+  { value: "+57", label: "🇨🇴 +57" },
+  { value: "+52", label: "🇲🇽 +52" },
+  { value: "+598", label: "🇺🇾 +598" },
+  { value: "+56", label: "🇨🇱 +56" },
+  { value: "+51", label: "🇵🇪 +51" },
+  { value: "+503", label: "🇸🇻 +503" },
+  { value: "+504", label: "🇭🇳 +504" },
+  { value: "+505", label: "🇳🇮 +505" },
+  { value: "+506", label: "🇨🇷 +506" },
+  { value: "+1", label: "🇺🇸 +1" },
+  { value: "+34", label: "🇪🇸 +34" },
+  { value: "+44", label: "🇬🇧 +44" },
+  { value: "+33", label: "🇫🇷 +33" },
+  { value: "+49", label: "🇩🇪 +49" },
+  { value: "+39", label: "🇮🇹 +39" },
+  { value: "+81", label: "🇯🇵 +81" },
+  { value: "+86", label: "🇨🇳 +86" },
+  { value: "+61", label: "🇦🇺 +61" },
+];
 
 const SuccessAnimation = () => (
   <div className="success-animation">
@@ -120,18 +147,19 @@ export const ContactContent = () => {
       />
       <div className="w-full max-w-5xl min-h-[50vh] flex flex-col justify-center items-center gap-10">
         <div className="flex flex-col text-center">
-          <p className="text-2xl font-bold text-[var(--texts)]">
-            <strong>🏅 ZazBee Partner - Nivel Fundador</strong>
-          </p>
-
-          <p>
-            Sé de los primeros talleres en usar esta tecnología.🚀 No estará
-            abierto para siempre.
-          </p>
+          <h6 className="text-2xl text-[var(--texts)] m-5">
+            <strong>🏅 <span className={`${baiJamjuree.className} font-normal text-3xl tracking-wider`}><span className="font-bold">Bee</span>scend</span> Partner - Nivel Fundador</strong>
+          </h6>
           <SubTitle
-            value="ZazBee no es para todos. Pero si es para vos, lo vas a sentir desde el día uno."
+            value="No es para todos. Pero si es para vos, lo vas a sentir desde el día uno."
             center
           />
+          <p>
+            Sé de los primeros talleres en usar esta tecnología 🚀.
+          </p>
+          <p>
+          No estará abierto para siempre.
+          </p>
         </div>
 
         <form

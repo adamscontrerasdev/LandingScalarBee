@@ -96,7 +96,7 @@ const testimonios = [
   {
     id: 1,
     name: "Team Celular",
-    text: "“Desde que usamos ZazBee, nuestros ingresos subieron un 30%. Es como tener un asistente de lujo que nunca se equivoca.”",
+    text: "“Desde que usamos Beescend, nuestros ingresos subieron un 30%. Es como tener un asistente de lujo que nunca se equivoca.”",
     img: "/Img/Testimonios/TeamCelular.png",
   },
   {
@@ -108,7 +108,7 @@ const testimonios = [
   {
     id: 3,
     name: "TechCell",
-    text: "“zazBee no es una app más. Es para los que toman esto en serio. Desde que la usamos, nuestros procesos son más rápidos y claros.”",
+    text: "“Beescend no es una app más. Es para los que toman esto en serio. Desde que la usamos, nuestros procesos son más rápidos y claros.”",
     img: "/Img/Testimonios/Logo-TECHCELL.jpg",
   },
 ];

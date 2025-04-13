@@ -24,7 +24,7 @@ export const FooterContent = ({}) => {
       /> */}
 
       <div className="w-full min-h-20 py-10   relative flex-col justify-center items-center gap-2 px-5">
-       <SubTitle value="©2025 all rights reserved by ZazBee." center />
+       <SubTitle value="©2025 all rights reserved by Beescend." center />
          {/* <div className=" flex gap-1 text-xs md:text-base text-[var(--texts)] justify-center items-center">
           <Link href={""}> Política de privacidad</Link>|
           <Link href={""}> Condiciones de uso</Link>|
