@@ -148,7 +148,7 @@ export const ContactContent = () => {
       <div className="w-full max-w-5xl min-h-[50vh] flex flex-col justify-center items-center gap-10">
         <div className="flex flex-col text-center">
           <h6 className="text-2xl text-[var(--texts)] m-5">
-            <strong>🏅 <span className={`${baiJamjuree.className} font-normal text-3xl tracking-wider`}><span className="font-bold">Bee</span>scend</span> Partner - Nivel Fundador</strong>
+            <strong>🏅 <span className={`${baiJamjuree.className} font-normal text-3xl tracking-wider`}>Fix</span><span className="font-bold">Bee</span> Partner - Nivel Fundador</strong>
           </h6>
           <SubTitle
             value="No es para todos. Pero si es para vos, lo vas a sentir desde el día uno."

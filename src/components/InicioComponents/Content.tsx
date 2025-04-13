@@ -11,6 +11,13 @@ import MetallicPaint, {
 } from "@/components/Elements/MetallicPaint";
 import RotatingText from "@/components/Elements/RotatingText";
 import { MdPhonelinkSetup } from "react-icons/md";
+import {Bai_Jamjuree } from "next/font/google"
+
+const baiJamjuree = Bai_Jamjuree({
+  subsets: ["latin"],
+  weight: ["300","400","500", "600", "700"], 
+});
+
 export const Content = () => {
   const [imageData, setImageData] = useState<ImageData | null>(null);
 
@@ -81,8 +88,7 @@ export const Content = () => {
                 className={`font-bold text-[var(--primary)]
                             text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl
                             text-left  `}
-              >
-                Beefix
+              ><span className={`${baiJamjuree.className} font-normal tracking-wider`}>Fix<span className="font-bold">Bee</span></span> 
               </h1>
               <MdPhonelinkSetup className=" text-[var(--texts)] text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl" />
               <RotatingText
