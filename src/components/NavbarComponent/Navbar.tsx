@@ -2,6 +2,12 @@
 import React from "react";
 import Image from "next/image";
 import { useTheme } from "@/app/Hooks/themeContext";
+import {Bai_Jamjuree } from "next/font/google"
+
+const baiJamjuree = Bai_Jamjuree({
+  subsets: ["latin"],
+  weight: ["300","400","500", "600", "700"], 
+});
 
 export const Navbar = () => {
   const { isDarkMode } = useTheme(); // Usando el hook
@@ -11,9 +17,10 @@ export const Navbar = () => {
   //   { title: "Contacto", href: "#Contacto" },
   // ];
 
+
   return (
     <div className="w-screen h-20 flex justify-between items-center  fixed top-0 z-[99999999] left-0 p-3 md:p-0 md:px-5 xl:px-10 backdrop-blur-xs ">
-      <div className="h-1/2 w-auto  flex gap-2 justify-center items-center">
+      <div className="h-1/2 w-auto flex gap-2 justify-center items-center">
         <Image
           src={
             isDarkMode
@@ -25,18 +32,13 @@ export const Navbar = () => {
           height={750}
           className="w-auto h-full"
         />
-        <Image
-          src={
-            isDarkMode
-              ? "/Img/logo scalarbee/bee-text-white.png"
-              : "/Img/logo scalarbee/bee-text-blackpng.png"
-          }
-          alt="Logo"
-          width={1272}
-          height={750}
-          className="w-auto h-full hidden md:block"
-        />
-        {/* <p className="text-3xl">{`BeeFix`}</p> */}
+        <h5
+          className={`tracking-wider text-2xl font-normal ${
+        isDarkMode ? "text-white" : "text-black"
+          } ${baiJamjuree.className}`}
+        >
+          <span className="font-bold">Bee</span>scend
+        </h5>
       </div>
       <div className="h-1/2 min-w-20">
         {/* {roots.map((root) => (
