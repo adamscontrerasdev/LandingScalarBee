@@ -14,7 +14,7 @@ export const InicioScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
   return (
     <>
       <motion.div
-        className="w-full md:h-[100dvh] flex justify-center items-center overflow-hidden md:py-10 md:pt-10 px-3 md:px-10 xl:px-52  top-0 left-0 z-0 pb-10 "
+        className="w-full md:h-[100dvh] flex justify-center items-center overflow-hidden md:py-10 md:pt-10 px-3 md:px-10 xl:px-52 top-0 left-0 z-0 pb-10 "
         id="Inicio"
         initial={{
           filter: "blur(0px)",
@@ -37,11 +37,11 @@ export const InicioScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
           <Image
             src={
               isDarkMode
-                ? "/Img/Backgrounds/BlackPanalFinal4k.png"
-                : "/Img/Backgrounds/withePanal.png"
+          ? "/Img/Backgrounds/BlackPanalFinal4k.png"
+          : "/Img/Backgrounds/withePanal.png"
             }
-            width={3200}
-            height={5687}
+            width={1600}
+            height={2843} 
             alt="bg"
             className="w-full h-full hidden lg:block"
           />
