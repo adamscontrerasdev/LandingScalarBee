@@ -70,8 +70,8 @@ const Card: React.FC<BeneficiosProps> = ({ benefit, order }) => {
       <div className={`lg:w-1/2 h-full flex justify-center items-center `}>
         <Image
           src={benefit.image}
-          width={1920}
-          height={1080}
+          width={1280}
+          height={720}
           alt="benefit"
           className="w-full h-full object-contain"
         />
