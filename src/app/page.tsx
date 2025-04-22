@@ -197,7 +197,7 @@ export default function Home() {
               borderRadius: isMobile ? "20px 20px 0 0" : "0 20px 20px 0",
             }}
             animate={{
-              y: currentIndex >= 1 ? "80px" : "80%",
+              y: currentIndex >= 1 ? "120px" : "80%",
 
               background: currentIndex >= 1 ? bgtodos : "var(--background)",
               boxShadow:
@@ -259,7 +259,7 @@ export default function Home() {
             key="funciones"
             initial={{ y: "100%" }}
             animate={{
-              y: currentIndex >= 2 ? "96px" : "100%",
+              y: currentIndex >= 2 ? "136px" : "100%",
               background: currentIndex >= 2 ? bgtodos : "var(--background)",
             }}
             transition={
@@ -294,7 +294,7 @@ export default function Home() {
             key="FAQ"
             initial={{ y: "100%" }}
             animate={{
-              y: currentIndex >= 3 ? "112px" : "100%",
+              y: currentIndex >= 3 ? "120px" : "100%",
               background: currentIndex >= 3 ? bgtodos : "var(--background)",
             }}
             transition={
@@ -329,7 +329,7 @@ export default function Home() {
             key="contact"
             initial={{ y: "100%" }}
             animate={{
-              y: currentIndex >= 4 ? "128px" : "100%",
+              y: currentIndex >= 4 ? "136px" : "100%",
               background: currentIndex >= 4 ? bgtodos : "var(--background)",
             }}
             transition={
@@ -364,7 +364,7 @@ export default function Home() {
             onClick={() => scrollToSection(1)}
             initial={{ top: "calc(80% - 2.5rem)", opacity: 0 }}
             animate={{
-              top: currentIndex === 0 ? "80vh" : "2.5rem",
+              top: currentIndex === 0 ? "80vh" : "5rem",
               opacity: currentIndex === 0 ? 0 : 1,
               background:
                 currentIndex === 0 ? "var(--background)" : "var(--foreground)",
@@ -388,7 +388,7 @@ export default function Home() {
                 currentIndex === 0
                   ? "100dvh"
                   : currentIndex >= 2
-                  ? "3.5rem"
+                  ? "6rem"
                   : isMobile
                   ? "94dvh"
                   : "96vh",
@@ -418,7 +418,7 @@ export default function Home() {
                 currentIndex === 0
                   ? "100vh"
                   : currentIndex >= 3
-                  ? "4.5rem"
+                  ? "5rem"
                   : isMobile
                   ? "94dvh"
                   : "96vh",
@@ -449,7 +449,7 @@ export default function Home() {
                 currentIndex === 0
                   ? "100vh"
                   : currentIndex >= 4
-                  ? "5.5rem"
+                  ? "6rem"
                   : isMobile
                   ? "94dvh"
                   : "96vh",
