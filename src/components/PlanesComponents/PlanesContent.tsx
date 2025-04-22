@@ -1,8 +1,8 @@
 import { Title } from "@/components/Elements";
-import { useTheme } from "@/app/Hooks/themeContext";
 // import { motion } from "framer-motion";
+import { FiMinus, FiPlus } from "react-icons/fi";
+import { motion } from "framer-motion";
 import { useState } from "react";
-import { useIsMobile } from "@/app/Hooks/useIsMobile";
 // import { PiCheckBold } from "react-icons/pi";
 
 // const Planes = [
@@ -180,26 +180,46 @@ interface FAQ {
 }
 
 const FAQCard: React.FC<FAQ> = ({ question, answer }) => {
-  // Función para generar las clases de borde basadas en el array border
-  const [shadow, setShadow] = useState(10);
-  const { isDarkMode } = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div
-      className={`bg-[var(--background)] transition-shadow border-[var(--shadow)] aspect-square border-[1px] p-4 rounded-xl`}
-      style={{
-        boxShadow: isDarkMode
-          ? `0px 0px ${shadow}px var(--primary-dark)`
-          : `0px 0px ${shadow}px var(--shadow)`,
-        transition: "box-shadow 0.3s ease-in-out",
-      }}
-      onMouseEnter={() => setShadow(shadow + 30)}
-      onMouseLeave={() => setShadow(shadow - 30)}
+    <motion.div
+      className={`w-full relative overflow-hidden cursor-pointer border-b border-[var(--shadow)] p-2 ${
+        isOpen ? "auto" : "3.5rem"
+      }`}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      onClick={() => setIsOpen(!isOpen)}
     >
-      <h2 className="text-sm md:text-lg font-bold text-[var(--texts)]">
-        {question}
-      </h2>
-      <h2 className="text-xs md:text-sm text-[var(--texts)]">{answer}</h2>
-    </div>
+      <div className="w-[90%] flex flex-col justify-start items-start p-2 gap-2 rounded-3xl">
+        <h2 className="text-sm md:text-lg font-bold text-[var(--texts)]">
+          {question}
+        </h2>
+
+        <div
+          className={`overflow-hidden transition-all duration-500 ease-in-out ${
+            isOpen ? "block" : "hidden"
+          }`}
+        >
+          <p className="text-xs md:text-sm text-[var(--texts)]">{answer}</p>
+        </div>
+      </div>
+
+      <motion.div
+        className="h-10 w-10 absolute right-4 top-1/2 -translate-y-1/2 flex justify-center items-center"
+        animate={{ rotate: isOpen ? 180 : 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <motion.div
+          key={isOpen ? "minus" : "plus"}
+          initial={{ opacity: 0, rotate: isOpen ? 180 : 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="text-white text-xl"
+        >
+          {isOpen ? <FiMinus /> : <FiPlus />}
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 
@@ -225,9 +245,14 @@ export const PlanesContent = () => {
     //     ))}
     //   </div>
     // </div>
-    <div className="flex flex-col justify-center items-center gap-10 rounded-3xl w-full relative  min-h-20 md:px-5">
-      <Title value="Preguntas Frecuentes" left={useIsMobile()} />
-      <div className="w-full max-w-5xl  grid grid-cols-2 md:grid-cols-4 gap-2 grid-rows-2 ">
+    <div className="flex flex-col justify-center items-center md:gap-10 rounded-3xl w-full relative  min-h-20 md:px-5">
+      <Title value="Preguntas Frecuentes" />
+      {/* <div className="w-full max-w-5xl  grid grid-cols-2 md:grid-cols-4 gap-2 grid-rows-2 ">
+        {FAQs.map((faq, index) => (
+          <FAQCard key={index} question={faq.question} answer={faq.answer} />
+        ))}
+      </div> */}
+      <div className="bg-[var(--background)] w-full  max-w-5xl p-4 transition-all duration-300 ease-in-out  rounded-3xl flex flex-col gap-2 hover:scale-105 ">
         {FAQs.map((faq, index) => (
           <FAQCard key={index} question={faq.question} answer={faq.answer} />
         ))}
