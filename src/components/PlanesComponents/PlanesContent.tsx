@@ -133,44 +133,54 @@ import { useState } from "react";
 
 const FAQs = [
   {
-    question: "¿Qué es un plan de reparación?",
+    question: "¿Qué es FixBee?",
     answer:
-      "Un plan de reparación es un conjunto de servicios que se ofrecen a tus clientes para reparar sus órdenes. ",
+      "FixBee es un módulo de BeeScend diseñado para ayudar a talleres de reparación de celulares y computadoras a gestionar órdenes de trabajo, clientes, empleados y finanzas desde una plataforma web intuitiva.",
   },
   {
-    question: "¿Qué tipo de servicios ofrecen los diferentes planes?",
+    question: "¿Cómo me suscribo a FixBee?",
     answer:
-      "Los diferentes planes ofrecen servicios de diferentes niveles de servicio. Por ejemplo, un plan ",
+      "Puedes elegir entre un plan Freemium (funcionalidades básicas), Mensual o Anual. Solo necesitas crear tu cuenta, seleccionar el plan y completar el pago a través de dLocal Go.",
   },
   {
-    question: "¿Qué es el precio de un plan de reparación?",
+    question: "¿Qué incluye cada plan?",
     answer:
-      "El precio de un plan de reparación puede variar según el tipo de servicio y la cantidad de servicios que ofreces. ",
+      "– Freemium: gestión de hasta 20 órdenes/mes y acceso limitado a reportes.  \n– Mensual: órdenes ilimitadas, reportes avanzados y soporte estándar.  \n– Anual: todo lo del plan Mensual más prioridad en soporte y acceso anticipado a nuevas funcionalidades.",
   },
   {
-    question: "¿Qué es el descuento de un plan de reparación?",
+    question: "¿Puedo cambiar de plan en cualquier momento?",
     answer:
-      "El descuento de un plan de reparación puede variar según el tipo de servicio y la cantidad de servicios que ofreces. ",
+      "Sí. Desde tu panel de administración puedes pasar de Freemium a un plan de pago (o viceversa). El cambio se hará efectivo en el próximo ciclo de facturación.",
   },
   {
-    question: "¿Qué es el plazo de un plan de reparación?",
+    question: "¿Cómo funciona la facturación y los pagos?",
     answer:
-      "El plazo de un plan de reparación puede variar según el tipo de servicio y la cantidad de servicios que ofreces. ",
+      "La facturación se realiza vía dLocal Go. Recibirás una factura electrónica al correo registrado y podrás pagar con tarjeta de crédito o débito.",
   },
   {
-    question:
-      "¿Qué es la cantidad de servicios que ofrecen los diferentes planes?",
-    answer: "La cantidad de servicios que",
+    question: "¿Cuál es la política de reembolsos?",
+    answer:
+      "La política de reembolsos será establecida junto a dLocal Go. Hasta entonces, no ofrecemos reembolsos automáticos, pero puedes contactarnos para evaluaciones caso por caso.",
   },
   {
-    question: "¿Qué es el precio de un plan de reparación?",
+    question: "¿Qué tipo de datos almacena FixBee?",
     answer:
-      "El precio de un plan de reparación puede variar según el tipo de servicio y la cantidad de servicios que ofreces.",
+      "FixBee almacena datos de órdenes, información de clientes y empleados, y registros financieros. Todos tus datos quedan bajo tu propiedad, con copias de seguridad y cifrado en tránsito.",
   },
   {
-    question: "¿Qué es el descuento de un plan de reparación?",
+    question: "¿Puedo exportar mis datos?",
     answer:
-      "El descuento de un plan de reparación puede variar según el tipo de servicio y la cantidad de servicios que ofreces.",
+      "Sí. En la sección de “Configuración” puedes exportar tus órdenes, listados de clientes y reportes financieros en formatos CSV o Excel.",
+  },
+  {
+    question: "¿Qué ocurre si olvido mi contraseña?",
+    answer:
+      "En la pantalla de inicio de sesión haz clic en “¿Olvidaste tu contraseña?” e ingresa tu email. Recibirás un enlace para restablecerla.",
+  },
+  {
+    question: "¿Dónde obtengo ayuda o soporte?",
+    answer:
+      "Para soporte técnico escribe a business@aubia.com.ar o usa el chat en vivo disponible en la plataforma (horario de atención: lun–vie de 9 a 17 h Argentina).",
   },
 ];
 

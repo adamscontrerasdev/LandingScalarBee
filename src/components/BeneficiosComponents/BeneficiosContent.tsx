@@ -30,20 +30,6 @@ const benefits = [
       "Mantente informado sobre el estado de cada orden en cualquier momento, sin perder detalles importantes.",
     TextButton: "Seguir órdenes",
   },
-  // {
-  //   title: "Reducción de errores y más eficiencia",
-  //   image: "/Img/Beneficio/Ordenes.png",
-  //   description:
-  //     "Optimiza los procesos y minimiza fallos en la gestión de reparaciones, aumentando la productividad.",
-  //   TextButton: "Mejorar eficiencia",
-  // },
-  // {
-  //   title: "Notificaciones automáticas para clientes",
-  //   image: "/Img/Beneficio/Ordenes.png",
-  //   description:
-  //     "Mantén a tus clientes informados sobre el estado de sus órdenes sin esfuerzo adicional.",
-  //   TextButton: "Activar notificaciones",
-  // },
   {
     title: "Interfaz intuitiva y fácil de usar",
     image: "/Img/Beneficio/Ordenes.png",
@@ -79,14 +65,6 @@ const Card: React.FC<BeneficiosProps> = ({ benefit, order }) => {
       <div className="lg:w-1/2 h-full flex flex-col justify-center items-start gap-2 md:p-5 pb-5">
         <Title value={benefit.title} variant="small" left />
         <p className="text-sm text-gray-500">{benefit.description}</p>
-        {/* <ButtonPrimary
-          text={benefit.TextButton}
-          style={{
-            background: "var(--background)",
-            boxShadow: "0px 0px 50px 10px var(--shadow)",
-          }}
-          notify={benefit.TextButton === "Activar notificaciones"}
-        /> */}
       </div>
       <div className="bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent w-full max-w-3xl h-[1px] absolute bottom-0 left-1/2 -translate-x-1/2" />
     </div>

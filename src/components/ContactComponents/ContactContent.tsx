@@ -1,20 +1,17 @@
 import { useState } from "react";
 import CircularText from "@/components/Elements/ReusableElements/CircularText";
-import { ImFacebook2 } from "react-icons/im";
 import { FaInstagram } from "react-icons/fa";
-import { RiTwitterXFill } from "react-icons/ri";
-import { IoIosMail } from "react-icons/io";
 import { Title } from "@/components/Elements";
 import { ButtonPrimary } from "@/components/Elements/ReusableElements/ButtonPrimary";
 import { SubTitle } from "@/components/Elements/ReusableElements/SubTitle";
 import { FooterContent } from "@/components/FooterComponents/FooterContent";
 import { useIsMobile } from "@/app/Hooks/useIsMobile";
 import { createLead } from "@/actions/leadsApi";
-import {Bai_Jamjuree } from "next/font/google"
+import { Bai_Jamjuree } from "next/font/google";
 
 const baiJamjuree = Bai_Jamjuree({
   subsets: ["latin"],
-  weight: ["300","400","500", "600", "700"], 
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const CountryCodeOptions = [
@@ -98,45 +95,45 @@ export const ContactContent = () => {
   };
 
   const redes = [
-    {
-      id: 1,
-      icon: (
-        <ImFacebook2 size={40} className="w-full h-full text-[var(--texts)]" />
-      ),
-      text: "FACEBOOK*FACEBOOK*",
-      link: "https://www.facebook.com/prubasdeusuarios/",
-      bg: "#f00",
-    },
+    // {
+    //   id: 1,
+    //   icon: (
+    //     <ImFacebook2 size={40} className="w-full h-full text-[var(--texts)]" />
+    //   ),
+    //   text: "FACEBOOK*FACEBOOK*",
+    //   link: "https://www.facebook.com/prubasdeusuarios/",
+    //   bg: "#f00",
+    // },
     {
       id: 2,
       icon: (
         <FaInstagram size={40} className="w-full h-full text-[var(--texts)]" />
       ),
       text: "INSTAGRAM*INSTAGRAM*",
-      link: "https://www.instagram.com/prubasdeusuarios/",
+      link: "https://www.instagram.com/beescend.app/",
       bg: "#0f0",
     },
-    {
-      id: 3,
-      icon: (
-        <RiTwitterXFill
-          size={40}
-          className="w-full h-full text-[var(--texts)]"
-        />
-      ),
-      text: "X*X*X*TWITTER*",
-      link: "https://www.twitter.com/prubasdeusuarios/",
-      bg: "#00f",
-    },
-    {
-      id: 4,
-      icon: (
-        <IoIosMail size={40} className="w-full h-full text-[var(--texts)]" />
-      ),
-      text: "MAIL*MAIL*MAIL*",
-      link: "mailto:prubasdeusuarios@example.com",
-      bg: "#ff0",
-    },
+    // {
+    //   id: 3,
+    //   icon: (
+    //     <RiTwitterXFill
+    //       size={40}
+    //       className="w-full h-full text-[var(--texts)]"
+    //     />
+    //   ),
+    //   text: "X*X*X*TWITTER*",
+    //   link: "https://www.twitter.com/prubasdeusuarios/",
+    //   bg: "#00f",
+    // },
+    // {
+    //   id: 4,
+    //   icon: (
+    //     <IoIosMail size={40} className="w-full h-full text-[var(--texts)]" />
+    //   ),
+    //   text: "MAIL*MAIL*MAIL*",
+    //   link: "mailto:business@aubia.com.ar",
+    //   bg: "#ff0",
+    // },
   ];
 
   return (
@@ -148,18 +145,22 @@ export const ContactContent = () => {
       <div className="w-full max-w-5xl min-h-[50vh] flex flex-col justify-center items-center gap-10">
         <div className="flex flex-col text-center">
           <h6 className="text-2xl text-[var(--texts)] m-5">
-            <strong>🏅 <span className={`${baiJamjuree.className} font-normal text-3xl tracking-wider`}>Fix</span><span className="font-bold">Bee</span> Partner - Nivel Fundador</strong>
+            <strong>
+              🏅{" "}
+              <span
+                className={`${baiJamjuree.className} font-normal text-3xl tracking-wider`}
+              >
+                Fix
+              </span>
+              <span className="font-bold">Bee</span> Partner - Nivel Fundador
+            </strong>
           </h6>
           <SubTitle
             value="No es para todos. Pero si es para vos, lo vas a sentir desde el día uno."
             center
           />
-          <p>
-            Sé de los primeros talleres en usar esta tecnología 🚀.
-          </p>
-          <p>
-          No estará abierto para siempre.
-          </p>
+          <p>Sé de los primeros talleres en usar esta tecnología 🚀.</p>
+          <p>No estará abierto para siempre.</p>
         </div>
 
         <form
