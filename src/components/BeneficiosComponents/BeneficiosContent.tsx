@@ -2,6 +2,7 @@ import React from "react";
 import { Title } from "@/components/Elements/";
 import Image from "next/image";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { useTheme } from "@/app/Hooks/themeContext";
 
 interface Beneficios {
   title: string;
@@ -15,36 +16,69 @@ interface BeneficiosProps {
   order: number;
 }
 
-const benefits = [
-  {
-    title: "Gestión centralizada de órdenes",
-    image: "/Img/Beneficio/Ordenes.png",
-    description:
-      "Administra todas las órdenes en un solo lugar, mejorando la organización y el control del negocio.",
-    TextButton: "Descúbrelo ahora",
-  },
-  {
-    title: "Seguimiento en tiempo real",
-    image: "/Img/Beneficio/Ordenes.png",
-    description:
-      "Mantente informado sobre el estado de cada orden en cualquier momento, sin perder detalles importantes.",
-    TextButton: "Seguir órdenes",
-  },
-  {
-    title: "Interfaz intuitiva y fácil de usar",
-    image: "/Img/Beneficio/Ordenes.png",
-    description:
-      "Una plataforma diseñada para ser accesible y sencilla, sin necesidad de largas curvas de aprendizaje.",
-    TextButton: "Explorar interfaz",
-  },
-  {
-    title: "Compatibilidad con todos tus dispositivos",
-    image: "/Img/Inicio/ResponsiveDark.png",
-    description:
-      "Accede a la plataforma desde cualquier dispositivo, ya sea móvil o de escritorio, para mayor comodidad.",
-    TextButton: "Ver compatibilidad",
-  },
-];
+const benefitsTodo = {
+  dark: [
+    {
+      title: "Gestión centralizada de órdenes",
+      image: "/Img/Beneficio/CentralizacionDeOrdenes.png",
+      description:
+        "Visualiza, gestiona y edita tus órdenes desde un solo panel. Ahorra tiempo y evita el desorden.",
+      TextButton: "Descúbrelo ahora",
+    },
+
+    {
+      title: "Seguimiento en tiempo real",
+      image: "/Img/Beneficio/NotificacinesB.png",
+      description:
+        "Consulta el progreso de cada orden al instante. Información clara, precisa y siempre actualizada.",
+      TextButton: "Seguir órdenes",
+    },
+    {
+      title: "Interfaz intuitiva y fácil de usar",
+      image: "/Img/Beneficio/DiseñoIntuitivoB.png",
+      description:
+        "Una plataforma diseñada para ser accesible y sencilla, sin necesidad de largas curvas de aprendizaje.",
+      TextButton: "Explorar interfaz",
+    },
+    {
+      title: "Compatibilidad con todos tus dispositivos",
+      image: "/Img/Inicio/ResponsiveDark.png",
+      description:
+        "Accede a la plataforma desde cualquier dispositivo, ya sea móvil o de escritorio, para mayor comodidad.",
+      TextButton: "Ver compatibilidad",
+    },
+  ],
+  light: [
+    {
+      title: "Gestión centralizada de órdenes",
+      image: "/Img/Beneficio/CentralizacionDeOrdenesL.png",
+      description:
+        "Visualiza, gestiona y edita tus órdenes desde un solo panel. Ahorra tiempo y evita el desorden.",
+      TextButton: "Descúbrelo ahora",
+    },
+    {
+      title: "Seguimiento en tiempo real",
+      image: "/Img/Beneficio/NotificacinesL.png",
+      description:
+        "Consulta el progreso de cada orden al instante. Información clara, precisa y siempre actualizada.",
+      TextButton: "Seguir órdenes",
+    },
+    {
+      title: "Interfaz intuitiva y fácil de usar",
+      image: "/Img/Beneficio/DiseñoIntuitivoL.png",
+      description:
+        "Una plataforma diseñada para ser accesible y sencilla, sin necesidad de largas curvas de aprendizaje.",
+      TextButton: "Explorar interfaz",
+    },
+    {
+      title: "Compatibilidad con todos tus dispositivos",
+      image: "/Img/Inicio/ResponsiveDark.png",
+      description:
+        "Accede a la plataforma desde cualquier dispositivo, ya sea móvil o de escritorio, para mayor comodidad.",
+      TextButton: "Ver compatibilidad",
+    },
+  ],
+};
 
 const Card: React.FC<BeneficiosProps> = ({ benefit, order }) => {
   return (
@@ -78,6 +112,9 @@ interface BeneficiosContentProps {
 export const BeneficiosContent: React.FC<BeneficiosContentProps> = ({
   isFocus,
 }) => {
+  const { isDarkMode } = useTheme();
+  const benefits = isDarkMode ? benefitsTodo.dark : benefitsTodo.light;
+
   return (
     <div className=" flex flex-col justify-center items-center gap-4 rounded-3xl w-full relative ">
       <div
