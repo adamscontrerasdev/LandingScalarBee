@@ -1,5 +1,5 @@
 import React from "react";
-import { Title } from "@/components/Elements/";
+import { ButtonPrimary, Title } from "@/components/Elements/";
 import Image from "next/image";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useTheme } from "@/app/Hooks/themeContext";
@@ -99,6 +99,7 @@ const Card: React.FC<BeneficiosProps> = ({ benefit, order }) => {
       <div className="lg:w-1/2 h-full flex flex-col justify-center items-start gap-2 md:p-5 pb-5">
         <Title value={benefit.title} variant="small" left />
         <p className="text-sm text-gray-500">{benefit.description}</p>
+        <ButtonPrimary text={benefit.TextButton} variant="fill" black />
       </div>
       <div className="bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent w-full max-w-3xl h-[1px] absolute bottom-0 left-1/2 -translate-x-1/2" />
     </div>

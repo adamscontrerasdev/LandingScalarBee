@@ -10,6 +10,7 @@ interface ButtonPrimaryProps {
   leve?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
+  black?: boolean;
   type?: "button" | "submit" | "reset"; // Agregamos el atributo type
 }
 
@@ -22,10 +23,11 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
   leve = false,
   onClick,
   disabled = false,
-  type = "button", // Valor predeterminado para type
+  type = "button", 
+  black// Valor predeterminado para type
 }) => {
   return (
-    <Magnet
+    <Magnet 
       padding={200}
       disabled={false}
       magnetStrength={!leve ? 20 : 50}
@@ -33,7 +35,7 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
     >
       <button
         type={type} // Pasamos el atributo type al botón
-        className={`text-base font-bold rounded-xl cursor-pointer hover:scale-105 transition-all duration-500 relative z-[99999] text-[var(--texts)] ${className} p-3 text-base md:text-xl ${
+        className={`text-base font-bold rounded-xl cursor-pointer hover:scale-105 transition-all duration-500 relative z-[99999] text-[var(--texts)] ${className} p-3 text-base md:text-xl ${black ? "text-black" : ""} ${
           variant
             ? variant === "fill"
               ? "bg-[var(--primary)]"
@@ -41,7 +43,9 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
             : "bg-[var(--foreground)]"
         }`}
         style={style}
-        onClick={onClick}
+        onClick={onClick ? onClick : () => {
+          window.open("https://app.beescend.com/?register=true", "_blank");
+        }}
         disabled={disabled}
       >
         {text}
