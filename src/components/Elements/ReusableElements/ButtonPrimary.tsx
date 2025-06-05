@@ -44,7 +44,7 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
         }`}
         style={style}
         onClick={onClick ? onClick : () => {
-          window.open("https://app.beescend.com/?register=true", "_blank");
+          window.open("https://app.beescend.com/?tab=register", "_blank");
         }}
         disabled={disabled}
       >
