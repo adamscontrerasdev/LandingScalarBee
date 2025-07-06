@@ -4,8 +4,8 @@ import React, {
   useContext,
   useState,
   useEffect,
-  ReactNode,
 } from "react";
+import type { ReactNode } from "react";
 
 // Tipado del contexto
 interface ThemeContextType {

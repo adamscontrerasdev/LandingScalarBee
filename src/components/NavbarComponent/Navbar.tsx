@@ -24,8 +24,8 @@ export const Navbar = () => {
         <Image
           src={
             isDarkMode
-              ? "/Img/logo scalarbee/bee-logo-white.png"
-              : "/Img/logo scalarbee/bee-logo-black.png"
+              ? "/Img/logo scalarbee/bee-logo-white.webp"
+              : "/Img/logo scalarbee/bee-logo-black.webp"
           }
           alt="Logo"
           width={1272}

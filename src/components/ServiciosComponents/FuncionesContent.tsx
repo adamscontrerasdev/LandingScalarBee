@@ -9,6 +9,7 @@ import { GiAutoRepair } from "react-icons/gi";
 import { GiWorld } from "react-icons/gi";
 import { useIsMobile } from "../../app/Hooks/useIsMobile";
 import { IoIosArrowDown } from "react-icons/io";
+import Image from "next/image";
 
 const Sections = [
   {
@@ -125,9 +126,11 @@ const TestiMoniosCard: React.FC<TestiMoniosProps> = ({ name, text, img }) => {
       <div className="flex gap-2 items-center">
         <div className="w-10 h-10 rounded-full bg-neutral-500 ">
           {img ? (
-            <img
+            <Image
               src={img}
               alt={name}
+              width={40}
+              height={40}
               className="w-full h-full rounded-full object-cover"
             />
           ) : (
@@ -146,7 +149,7 @@ const TestiMoniosCard: React.FC<TestiMoniosProps> = ({ name, text, img }) => {
 export const FuncionesContent = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
-  const [selectedSection, setSelectedSection] = useState<section>(Sections[0]);
+  const [selectedSection, setSelectedSection] = useState<section>(Sections[0]!);
   const infoColRef = useRef<HTMLDivElement>(null);
   const [widthItemsMenu, setWidthItemsMenu] = useState(0);
   const carouselRefItemsMenu = useRef<HTMLDivElement>(null);

@@ -31,7 +31,7 @@ export const FadeContent: React.FC<FadeContentProps> = ({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           observer.unobserve(element);
           setTimeout(() => {
             setInView(true);

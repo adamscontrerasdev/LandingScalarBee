@@ -4,7 +4,7 @@ import { Content } from "../../components";
 import { useTheme } from "../Hooks/themeContext";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { PropsForScreens } from "../Types";
+import type { PropsForScreens } from "../Types";
 import { useIsMobile } from "../Hooks/useIsMobile";
 
 export const InicioScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
@@ -37,8 +37,8 @@ export const InicioScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
           <Image
             src={
               isDarkMode
-          ? "/Img/Backgrounds/BlackPanalFinal4k.png"
-          : "/Img/Backgrounds/withePanal.png"
+          ? "/Img/Backgrounds/BlackPanalFinal4k.webp"
+          : "/Img/Backgrounds/withePanal.webp"
             }
             width={1600}
             height={2843} 

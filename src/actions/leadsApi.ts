@@ -1,6 +1,6 @@
 "use server";
 
-import { Lead } from "@/components/types";
+import type { Lead } from "@/components/types";
 
 export async function createLead(lead: Lead) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/leads`, {

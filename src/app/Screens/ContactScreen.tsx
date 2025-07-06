@@ -1,6 +1,6 @@
 import { ContactContent } from "../../components";
 import { FolioPageContainer } from "@/components/Elements/ReusableElements/FolioPageContainer";
-import { PropsForScreens } from "../Types";
+import type { PropsForScreens } from "../Types";
 
 export const ContactScreen: React.FC<PropsForScreens> = ({ isFocus }) => {
   return (

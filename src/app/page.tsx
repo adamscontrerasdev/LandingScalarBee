@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useIsMobile } from "./Hooks/useIsMobile";
 import {
@@ -10,85 +10,66 @@ import {
   ContactScreen,
 } from "./Screens";
 
+// Memoizar las secciones para evitar re-creaciones
+const SECTION_IDS = ["inicio", "beneficios", "funciones", "FAQ", "contact"];
+const INITIAL_SCROLL_STATE = {
+  beneficios: false,
+  funciones: false,
+  FAQ: false,
+  contact: false,
+};
+
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const isScrolling = useRef(false);
-  const [hasScrolledSections, setHasScrolledSections] = useState({
-    beneficios: false,
-    funciones: false,
-    FAQ: false,
-    contact: false,
-  });
+  const [hasScrolledSections, setHasScrolledSections] = useState(INITIAL_SCROLL_STATE);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const touchStartY = useRef<number | null>(null);
   const touchEndY = useRef<number | null>(null);
   const isMobile = useIsMobile();
 
-  useEffect(() => {
-    if (currentIndex === 0 && scrollRef.current) {
-      scrollRef.current.scrollTo({ top: 0 });
-    }
-  }, [currentIndex]);
-
-  const handleClickHome = () => {
-    scrollToSection(0);
-  };
-
-  // Función que maneja el desplazamiento para cada sección
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>, section: string) => {
-    if (e.currentTarget.scrollTop > 0) {
-      setHasScrolledSections((prev) => ({ ...prev, [section]: true }));
-    } else {
-      setHasScrolledSections((prev) => ({ ...prev, [section]: false }));
-    }
-  };
-  const sectionIds = ["inicio", "beneficios", "funciones", "FAQ", "contact"];
-
-  const bgtodos = "var(--foreground)";
-
-  const scrollToSection = (index: number) => {
-    if (isScrolling.current || index < 0 || index >= sectionIds.length) return;
+  const scrollToSection = useCallback((index: number) => {
+    if (isScrolling.current || index < 0 || index >= SECTION_IDS.length) return;
 
     isScrolling.current = true;
     setCurrentIndex(index);
-    window.history.replaceState(null, "", `#${sectionIds[index]}`);
+    window.history.replaceState(null, "", `#${SECTION_IDS[index]}`);
 
     setTimeout(() => {
       isScrolling.current = false;
-    }, 500);
-  };
+    }, 300); // Reducido de 500ms a 300ms
+  }, []);
 
-  const handleWheel = (e: WheelEvent) => {
+  // Memoizar funciones para evitar re-renders innecesarios
+  const handleClickHome = useCallback(() => {
+    scrollToSection(0);
+  }, [scrollToSection]);
+
+  const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>, section: string) => {
+    const isScrolled = e.currentTarget.scrollTop > 0;
+    setHasScrolledSections((prev) => {
+      if (prev[section as keyof typeof prev] !== isScrolled) {
+        return { ...prev, [section]: isScrolled };
+      }
+      return prev;
+    });
+  }, []);
+
+  // Optimizar handleWheel con throttling
+  const handleWheel = useCallback((e: WheelEvent) => {
     if (isScrolling.current) return;
 
-    const section = document.querySelector(
-      `#${sectionIds[currentIndex]}`
-    ) as HTMLElement;
-    const scrollableDiv = section?.querySelector(
-      ".scrollable-content"
-    ) as HTMLElement;
+    const section = document.querySelector(`#${SECTION_IDS[currentIndex]}`) as HTMLElement;
+    const scrollableDiv = section?.querySelector(".scrollable-content") as HTMLElement;
 
     if (scrollableDiv) {
       const atTop = scrollableDiv.scrollTop === 0;
-      const atBottom =
-        Math.ceil(scrollableDiv.scrollTop + scrollableDiv.clientHeight) >=
-        scrollableDiv.scrollHeight;
+      const atBottom = Math.ceil(scrollableDiv.scrollTop + scrollableDiv.clientHeight) >= scrollableDiv.scrollHeight;
 
-      console.log({
-        section: sectionIds[currentIndex],
-        scrollTop: scrollableDiv.scrollTop,
-        clientHeight: scrollableDiv.clientHeight,
-        scrollHeight: scrollableDiv.scrollHeight,
-        atTop,
-        atBottom,
-      });
-
-      if (e.deltaY > 0) {
-        if (!atBottom) return; // Si no está en el fondo, no cambiar de sección
+      if (e.deltaY > 0 && atBottom) {
         e.preventDefault();
         scrollToSection(currentIndex + 1);
-      } else {
-        if (!atTop) return; // Si no está en la parte superior, no cambiar de sección
+      } else if (e.deltaY < 0 && atTop) {
         e.preventDefault();
         scrollToSection(currentIndex - 1);
       }
@@ -96,39 +77,32 @@ export default function Home() {
       e.preventDefault();
       scrollToSection(currentIndex + (e.deltaY > 0 ? 1 : -1));
     }
-  };
+  }, [currentIndex, scrollToSection]);
 
-  const handleTouchStart = (e: TouchEvent) => {
-    touchStartY.current = e.touches[0].clientY;
-  };
+  const handleTouchStart = useCallback((e: TouchEvent) => {
+    if (e.touches[0]) {
+      touchStartY.current = e.touches[0].clientY;
+    }
+  }, []);
 
-  const handleTouchMove = (e: TouchEvent) => {
-    touchEndY.current = e.touches[0].clientY;
-  };
+  const handleTouchMove = useCallback((e: TouchEvent) => {
+    if (e.touches[0]) {
+      touchEndY.current = e.touches[0].clientY;
+    }
+  }, []);
 
-  const handleTouchEnd = () => {
-    if (
-      touchStartY.current === null ||
-      touchEndY.current === null ||
-      isScrolling.current
-    )
-      return;
+  const handleTouchEnd = useCallback(() => {
+    if (touchStartY.current === null || touchEndY.current === null || isScrolling.current) return;
 
     const deltaY = touchStartY.current - touchEndY.current;
-    const threshold = 10; // sensibilidad mínima para considerar swipe
+    const threshold = 10;
 
-    const section = document.querySelector(
-      `#${sectionIds[currentIndex]}`
-    ) as HTMLElement;
-    const scrollableDiv = section?.querySelector(
-      ".scrollable-content"
-    ) as HTMLElement;
+    const section = document.querySelector(`#${SECTION_IDS[currentIndex]}`) as HTMLElement;
+    const scrollableDiv = section?.querySelector(".scrollable-content") as HTMLElement;
 
     if (scrollableDiv) {
       const atTop = scrollableDiv.scrollTop === 0;
-      const atBottom =
-        Math.ceil(scrollableDiv.scrollTop + scrollableDiv.clientHeight) >=
-        scrollableDiv.scrollHeight;
+      const atBottom = Math.ceil(scrollableDiv.scrollTop + scrollableDiv.clientHeight) >= scrollableDiv.scrollHeight;
 
       if (deltaY > threshold && atBottom) {
         scrollToSection(currentIndex + 1);
@@ -145,39 +119,54 @@ export default function Home() {
 
     touchStartY.current = null;
     touchEndY.current = null;
-  };
+  }, [currentIndex, scrollToSection]);
+
+  useEffect(() => {
+    if (currentIndex === 0 && scrollRef.current) {
+      scrollRef.current.scrollTo({ top: 0 });
+    }
+  }, [currentIndex]);
 
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    const initialIndex = sectionIds.indexOf(hash);
+    const initialIndex = SECTION_IDS.indexOf(hash);
     if (initialIndex !== -1) setCurrentIndex(initialIndex);
 
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleTouchMove, { passive: true });
-    window.addEventListener("touchend", handleTouchEnd);
+    // Usar passive: false solo cuando sea necesario
+    const wheelOptions = { passive: false };
+    const touchOptions = { passive: true };
+
+    window.addEventListener("wheel", handleWheel, wheelOptions);
+    window.addEventListener("touchstart", handleTouchStart, touchOptions);
+    window.addEventListener("touchmove", handleTouchMove, touchOptions);
+    window.addEventListener("touchend", handleTouchEnd, touchOptions);
 
     return () => {
       window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
-      window.removeEventListener("wheel", handleWheel);
     };
-  }, [currentIndex]);
+  }, [handleWheel, handleTouchStart, handleTouchMove, handleTouchEnd]);
 
-  const durationTime = 0.3;
+  const durationTime = 0.2; // Reducido de 0.3 a 0.2
+  const bgtodos = "var(--foreground)";
+
+  // Memoizar el contenido móvil
+  const mobileContent = useMemo(() => (
+    <div className="px-5 overflow-x-hidden">
+      <InicioScreen />
+      <BeneficiosScreen />
+      <FuncionesScreen />
+      <PlanesScreen />
+      <ContactScreen />
+    </div>
+  ), []);
 
   return (
     <div className="">
       {isMobile ? (
-        <div className="px-5 overflow-x-hidden ">
-          <InicioScreen></InicioScreen>
-          <BeneficiosScreen></BeneficiosScreen>
-          <FuncionesScreen></FuncionesScreen>
-          <PlanesScreen></PlanesScreen>
-          <ContactScreen></ContactScreen>
-        </div>
+        mobileContent
       ) : (
         <div className="relative h-[100dvh] overflow-hidden" aria-live="polite">
           {/* InicioScreen - Siempre visible en el fondo */}
@@ -374,9 +363,9 @@ export default function Home() {
                 ? { duration: durationTime }
                 : { type: "spring", stiffness: 120, damping: 15 }
             }
-            id={sectionIds[1]}
+            id={SECTION_IDS[1]}
           >
-            <h2>{sectionIds[1]}</h2>
+            <h2>{SECTION_IDS[1]}</h2>
           </motion.div>
 
           <motion.div
@@ -404,9 +393,9 @@ export default function Home() {
                 ? { duration: durationTime }
                 : { type: "spring", stiffness: 120, damping: 15 }
             }
-            id={sectionIds[2]}
+            id={SECTION_IDS[2]}
           >
-            <h2>{sectionIds[2]}</h2>
+            <h2>{SECTION_IDS[2]}</h2>
           </motion.div>
 
           <motion.div
@@ -434,9 +423,9 @@ export default function Home() {
                 ? { duration: durationTime }
                 : { type: "spring", stiffness: 120, damping: 15 }
             }
-            id={sectionIds[3]}
+            id={SECTION_IDS[3]}
           >
-            <h2>{sectionIds[3]}</h2>
+            <h2>{SECTION_IDS[3]}</h2>
           </motion.div>
 
           <motion.div
@@ -465,9 +454,9 @@ export default function Home() {
                 ? { duration: durationTime }
                 : { type: "spring", stiffness: 120, damping: 15 }
             }
-            id={sectionIds[4]}
+            id={SECTION_IDS[4]}
           >
-            <h2>{sectionIds[4]}</h2>
+            <h2>{SECTION_IDS[4]}</h2>
           </motion.div>
         </div>
       )}

@@ -20,7 +20,7 @@ const benefitsTodo = {
   dark: [
     {
       title: "Gestión centralizada de órdenes",
-      image: "/Img/Beneficio/CentralizacionDeOrdenes.png",
+      image: "/Img/Beneficio/CentralizacionDeOrdenes.webp",
       description:
         "Visualiza, gestiona y edita tus órdenes desde un solo panel. Ahorra tiempo y evita el desorden.",
       TextButton: "Descúbrelo ahora",
@@ -28,21 +28,21 @@ const benefitsTodo = {
 
     {
       title: "Seguimiento en tiempo real",
-      image: "/Img/Beneficio/NotificacinesB.png",
+      image: "/Img/Beneficio/NotificacinesB.webp",
       description:
         "Consulta el progreso de cada orden al instante. Información clara, precisa y siempre actualizada.",
       TextButton: "Seguir órdenes",
     },
     {
       title: "Interfaz intuitiva y fácil de usar",
-      image: "/Img/Beneficio/DiseñoIntuitivoB.png",
+      image: "/Img/Beneficio/DiseñoIntuitivoB.webp",
       description:
         "Una plataforma diseñada para ser accesible y sencilla, sin necesidad de largas curvas de aprendizaje.",
       TextButton: "Explorar interfaz",
     },
     {
       title: "Compatibilidad con todos tus dispositivos",
-      image: "/Img/Inicio/ResponsiveDark.png",
+      image: "/Img/Inicio/ResponsiveDark.webp",
       description:
         "Accede a la plataforma desde cualquier dispositivo, ya sea móvil o de escritorio, para mayor comodidad.",
       TextButton: "Ver compatibilidad",
@@ -51,28 +51,28 @@ const benefitsTodo = {
   light: [
     {
       title: "Gestión centralizada de órdenes",
-      image: "/Img/Beneficio/CentralizacionDeOrdenesL.png",
+      image: "/Img/Beneficio/CentralizacionDeOrdenesL.webp",
       description:
         "Visualiza, gestiona y edita tus órdenes desde un solo panel. Ahorra tiempo y evita el desorden.",
       TextButton: "Descúbrelo ahora",
     },
     {
       title: "Seguimiento en tiempo real",
-      image: "/Img/Beneficio/NotificacinesL.png",
+      image: "/Img/Beneficio/NotificacinesL.webp",
       description:
         "Consulta el progreso de cada orden al instante. Información clara, precisa y siempre actualizada.",
       TextButton: "Seguir órdenes",
     },
     {
       title: "Interfaz intuitiva y fácil de usar",
-      image: "/Img/Beneficio/DiseñoIntuitivoL.png",
+      image: "/Img/Beneficio/DiseñoIntuitivoL.webp",
       description:
         "Una plataforma diseñada para ser accesible y sencilla, sin necesidad de largas curvas de aprendizaje.",
       TextButton: "Explorar interfaz",
     },
     {
       title: "Compatibilidad con todos tus dispositivos",
-      image: "/Img/Inicio/ResponsiveDark.png",
+      image: "/Img/Inicio/ResponsiveDark.webp",
       description:
         "Accede a la plataforma desde cualquier dispositivo, ya sea móvil o de escritorio, para mayor comodidad.",
       TextButton: "Ver compatibilidad",
