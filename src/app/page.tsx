@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useIsMobile } from "./Hooks/useIsMobile";
+import { useQueryParams } from "./Hooks/useQueryParams";
 import {
   InicioScreen,
   BeneficiosScreen,
@@ -27,6 +28,7 @@ export default function Home() {
   const touchStartY = useRef<number | null>(null);
   const touchEndY = useRef<number | null>(null);
   const isMobile = useIsMobile();
+  const { sellerId, leadId } = useQueryParams();
 
   const scrollToSection = useCallback((index: number) => {
     if (isScrolling.current || index < 0 || index >= SECTION_IDS.length) return;
@@ -163,12 +165,24 @@ export default function Home() {
     </div>
   ), []);
 
+  const getRegisterLink = (baseLink: string) => {
+    const params = new URLSearchParams();
+    if (sellerId) params.append("seller_id", sellerId);
+    if (leadId) params.append("lead_id", leadId);
+    return `${baseLink}?${params.toString()}`;
+  };
+
   return (
     <div className="">
       {isMobile ? (
         mobileContent
       ) : (
         <div className="relative h-[100dvh] overflow-hidden" aria-live="polite">
+          {/* Example of a registration link */}
+          <a href={getRegisterLink("/register")} className="register-link">
+            Register Now
+          </a>
+
           {/* InicioScreen - Siempre visible en el fondo */}
           <div
             className="fixed top-0 left-0 w-full h-full z-0"

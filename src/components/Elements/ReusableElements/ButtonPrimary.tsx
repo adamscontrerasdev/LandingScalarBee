@@ -1,5 +1,6 @@
 import CountUp from "./CountUp";
 import { Magnet } from "./Magnet";
+import { useQueryParams } from "@/app/Hooks/useQueryParams";
 
 interface ButtonPrimaryProps {
   text?: string;
@@ -26,6 +27,16 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
   type = "button", 
   black// Valor predeterminado para type
 }) => {
+  const { sellerId, leadId } = useQueryParams();
+
+  const getRegisterLink = () => {
+    const params = new URLSearchParams();
+    params.append("tab", "register");
+    if (sellerId) params.append("seller_id", sellerId);
+    if (leadId) params.append("lead_id", leadId);
+    return `https://app.beescend.com/?${params.toString()}`;
+  };
+
   return (
     <Magnet 
       padding={200}
@@ -44,7 +55,7 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
         }`}
         style={style}
         onClick={onClick ? onClick : () => {
-          window.open("https://app.beescend.com/?tab=register", "_blank");
+          window.open(getRegisterLink(), "_blank");
         }}
         disabled={disabled}
       >
